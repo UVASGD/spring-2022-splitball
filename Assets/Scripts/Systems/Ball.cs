@@ -91,30 +91,9 @@ public class Ball : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col){
-        if (col.gameObject.name == "0 to 1") {
-			SceneManager.LoadScene("Level1");
-		}
-        if (col.gameObject.name == "Goal") {
-			this.transform.position = new Vector3(-10, 0, -1);
-			SceneManager.LoadScene("Level2");
-		}
-		if (col.gameObject.name == "2 to 3") {
-			SceneManager.LoadScene("Level3");
-		}
-        if (col.gameObject.name == "3 to 4") {
-			SceneManager.LoadScene("Level4");
-		}
-        if (col.gameObject.name == "4 to win") {
-			SceneManager.LoadScene("Victory");
-		}
-		// if (collision.CompareTag("3 to win")) {
-		// 	gm.isActive = false;
-		// 	SceneManager.LoadScene("Victory");
-		// 	Destroy(gameObject);			
-		// }
-
+       
         //First tests to see if collided with button, THEN tests to see if its a sticky button
-        else if (col.gameObject.GetComponent<LogicActivator>() && col.gameObject.GetComponent<LogicActivator>().type == 3)
+       if (col.gameObject.GetComponent<LogicActivator>() && col.gameObject.GetComponent<LogicActivator>().type == 3)
         {
             tiedStickyButton = col.gameObject;
         }

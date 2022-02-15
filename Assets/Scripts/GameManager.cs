@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject ball;
     public GameObject player;
     public GameObject player2;
+    public static bool loserFound;
 
     public bool isActive = false;
 
@@ -30,6 +31,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(PlayerData.player1score);
+        Debug.Log(PlayerData.player2score);
+        loserFound = false;
         try {
             startButton.gameObject.GetComponent<Button>();
             startButton.onClick.AddListener(StartGame);
@@ -88,6 +92,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //checks condition to win, should be different for each kind of game
+        //TODO allow player to fizzle out and die before switching to next scene, play animation adding to score
+      checkWin();
         //should be constant
         if(Input.GetKey("escape")){
             Application.Quit();
@@ -100,6 +107,39 @@ public class GameManager : MonoBehaviour
             player2.GetComponent<Rigidbody2D>().velocity = dir *2;
         }
     }
+    //update this with rules of game
+    public void checkWin()
+    {
+        player.GetComponent<battleCollison>().OnTriggerEnter2D(player.GetComponent<Collider2D>());
+        player2.GetComponent<battleCollison>().OnTriggerEnter2D(player.GetComponent<Collider2D>());
+        if(loserFound == true)
+        {
+            resetForScene();
+            //TODO make this random
+            SceneManager.LoadScene("bunker");
+        }
+    }
+
+    //resets static values before switch to next secne, also checks for winner
+    public void resetForScene()
+    {
+     //   Time.timeScale = 0;
+        
+        loserFound = false;
+        
+    if (PlayerData.player1score >= 5 && PlayerData.player1score != PlayerData.player2score)
+        {
+            //TODO take to victory scene
+            Debug.Log("p1 won");
+        }
+
+    if (PlayerData.player2score >= 5 && PlayerData.player1score != PlayerData.player2score)
+    {
+            //TODO take to victory scene
+            Debug.Log("p2 won");    
+    }
+    }
+
 
     // Start the game
     public void StartGame() {
@@ -111,6 +151,7 @@ public class GameManager : MonoBehaviour
         catch {}
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "StartMenu") {
+            //TODO this needs to load random game
 		    SceneManager.LoadScene("Level0");
         }
         if (scene.name == "Victory" || scene.name == "Defeat") {

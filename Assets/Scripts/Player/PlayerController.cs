@@ -70,8 +70,8 @@ public class PlayerController : Destructible
         if (gm.isActive) {
             movement = new Vector2(Input.GetAxis("Horizontal1"), Input.GetAxis("Vertical1"));
             aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            fire = Input.GetMouseButton(0);  
-            InvokeRepeating("RegenerateStamina", 0f, .5f);
+         //   fire = Input.GetMouseButton(0);  
+         //   InvokeRepeating("RegenerateStamina", 0f, .5f);
         }
         iFrameCounter += Time.deltaTime;
         lastDash += Time.deltaTime;
@@ -115,32 +115,44 @@ public class PlayerController : Destructible
 	}
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        
-        if (collision.gameObject.tag == "levelTile")
-        {
-            Debug.Log(gameObject.name + " Lost");
-            Time.timeScale = 0;
-        }
 
-        if (collision.gameObject.tag == "Boost" ) {
-            GetComponent<AudioSource>().Play();
-            StartCoroutine(PowerUp(10f));            
-            collision.gameObject.SetActive(false);
-            Debug.Log("Speedi Boi");
+        //checks if powerup
+        if(collision.gameObject.tag == "Boost")
+        {
+            checkPowerUp(collision);
         }
 
         if (collision.gameObject.tag == "Recall" ) {
             RecallActive = true;
             collision.gameObject.SetActive(false);
         }
+    }
 
-        if (collision.gameObject.tag == "Heal") {
-            // Debug.Log("Heal");
+
+    //New powerups implimented here (and other controler)
+    //TODO fix audio
+    private void checkPowerUp(Collider2D col)
+    {
+        if (col.gameObject.name == "Boost(Clone)")
+        {
+            GetComponent<AudioSource>().Play();
+            StartCoroutine(PowerUp(10f));
+            col.gameObject.SetActive(false);
+
+            powerUpSpawn.spawnedPowerUps -= 1;
+
+            Debug.Log("Speedi Boi");
+        }
+
+        if (col.gameObject.name == "Heal")
+        {
+            Debug.Log("Heal");
             Heal(healPower);
             AudioSource.PlayClipAtPoint(clips[5], transform.position);
-            collision.gameObject.SetActive(false);
-        }  
+            col.gameObject.SetActive(false);
+        }
     }
+
 
     public override void Heal(float amount) {
         float sum = this.hitPoints += amount;
