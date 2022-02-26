@@ -1,0 +1,25 @@
+New systems
+
+need to make copies for each new game mode
+
+
+battleCollison:	(this script is attached to each player, it is run in checkRun)
+	if (collision.gameObject.tag == "levelTile"): this line checks what touched player, modify what was touched or the conditional to change what was scoring) 
+	
+   PlayerData.player2score += 1;: adds to glocbal static score
+   gameObject.GetComponent<PlayerController>().Die();:tells player to do die animation, currently game ends before it does
+   GameManager.loserFound = true;: changes conditional in game manager so it knows to reset
+   
+   
+GameManager:
+	checkWin: run each frame, checks the condtional (in collison case uses battleCollison) for winner.
+	if it checks both and a winner has been found runs resetForScene. if no winner found, goes to random scene
+	resetForScene: reset for checking if someone one each around then checks if someone has 5 points.
+	
+PowerUpManager:
+	Activators: set to number of spawn points. place empty objects from the scene in each element spot for each spawn point for cordinates
+	Spawners: set to number of power ups to use. set each element to power up prefab. 
+		Spawn Checker: how many seconds before it checks if it should spawn a random power up at a random location
+		Spawn chance: chance a power up will spawn each time it is checked. if it is, reset spawn chance to its orginal value. 
+		Increase Chance: if a power up is not spawned, the amount to add to spawn chance for the next check
+
