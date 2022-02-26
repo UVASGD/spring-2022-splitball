@@ -11,7 +11,6 @@ public class bulletSpawnStraight : MonoBehaviour
     //where bullet is spawned from
     public Transform spawnPoint;
 
-
     //attack-y stuff (taken from spencers work on enemyAI)
     public float shootTimer; //ie how long between shots
     public float lastFire = 0; //the actual timer maybe I should use different names lol

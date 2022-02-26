@@ -1,0 +1,15 @@
+Enemys 
+
+scripts:
+	bulletSpawnStraight: can be used instead of bulletSpawn to fire in a straight line instead. currently only supports cardinal directions
+	Bullet: what is spawned is what is in the prefab, changing the bullet would have to change prefab
+BulletSpawn: 
+	ShootTimer: how long between each shot, change to modify freqency
+	LastFire: counter of how long since last shot (don't modify)
+	Offset min: minium angle offset of bullet fire (0 is straight at enemy)
+	Offset Max: maxium angle offset of bullet fire, picks between the two
+	
+
+pathed enemy: using seeker script with chase the player. would need to be modified for 2 player and set up with a*
+Still enemy: stay still
+patrol enemy: using Enemy Ai Patrol script move between two points while firing
