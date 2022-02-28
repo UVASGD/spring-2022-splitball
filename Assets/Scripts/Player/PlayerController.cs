@@ -8,7 +8,6 @@ public class PlayerController : Destructible
 {
 
     //TODOS FROM PlayerMovement.cs
-    //Magnet powerup
     //max speed (both for dash and normal, consider a deacceleration of maxSpeed after a dash?)
     //delete PlayerMovement once done
 
@@ -54,6 +53,10 @@ public class PlayerController : Destructible
 
     // Heal
     public float healPower = 20f;
+
+    //Status
+    public bool balloon = false;
+    float balloonTimer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -106,7 +109,33 @@ public class PlayerController : Destructible
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         animator.SetFloat("Angle", angle);
         animator.SetFloat("VelMag", rb2d.velocity.magnitude);
-    	}
+        
+        if (balloon == true)
+            ballooning();
+    }
+
+    private void ballooning()
+    {
+        if (balloonTimer <= 2.22f)
+        {
+            if (rb2d.transform.localScale.x < 1.76f)
+            {
+                rb2d.transform.localScale += new Vector3(0.02f, 0.02f, 0.0f);
+            }
+            else
+                balloonTimer += Time.deltaTime;
+        }
+        else
+        {
+            rb2d.transform.localScale -= new Vector3(0.02f, 0.02f, 0.0f);
+        }
+
+        if (rb2d.transform.localScale.x == 1)
+        {
+            balloonTimer = 0.0f;
+            balloon = false;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision) {
 
@@ -124,19 +153,39 @@ public class PlayerController : Destructible
 
 
     //New powerups implimented here (and other controler)
-    //TODO fix audio
+    //TODO fix/add audio, may be better to add onto the power up itself
+    //where to add power up code
     private void checkPowerUp(Collider2D col)
     {
+        //adds to dahses 
         if (col.gameObject.name == "Boost(Clone)")
         {
-            GetComponent<AudioSource>().Play();
-            StartCoroutine(PowerUp(10f));
-            col.gameObject.SetActive(false);
+            stats.dashes += 1;
+            //GetComponent<AudioSource>().Play();
 
             powerUpSpawn.spawnedPowerUps -= 1;
-
+            col.gameObject.SetActive(false);
             Debug.Log("Speedi Boi");
         }
+
+        if (col.gameObject.name.Equals("BoostPad(Clone)"))
+        {
+            //GetComponent<AudioSource>().Play();
+            Instantiate(col.GetComponent<boostPadHolder>().boostPad, GameObject.Find("Player2").GetComponent<Transform>().position, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));
+
+            col.gameObject.SetActive(false);
+            powerUpSpawn.spawnedPowerUps -= 1;
+        }
+
+        if (col.gameObject.name.Equals("Balloon(Clone)"))
+        {
+            //GetComponent<AudioSource>().Play();
+            GameObject.Find("Player2").GetComponent<Player2Controler>().balloon = true;
+
+            col.gameObject.SetActive(false);
+            powerUpSpawn.spawnedPowerUps -= 1;
+        }
+
 
         if (col.gameObject.name == "Heal")
         {
