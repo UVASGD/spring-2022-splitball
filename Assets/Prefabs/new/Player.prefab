@@ -236,6 +236,7 @@ MonoBehaviour:
   ballEntered2: 0
   timeToDie: 1.37
   healPower: 20
+  balloon: 0
 --- !u!58 &7903341050043387172
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -224,8 +224,6 @@ MonoBehaviour:
   dashCD: 1
   lastDash: 0
   dashPower: 10
-  crosshairs: {fileID: 5497589984076116633}
-  crosshairDistance: 4
   neutral: {fileID: 0}
   dash: {fileID: 0}
   pos: {fileID: 0}
@@ -236,6 +234,7 @@ MonoBehaviour:
   ballEntered2: 0
   timeToDie: 1.37
   healPower: 20
+  balloon: 0
 --- !u!58 &5497589984008248229
 CircleCollider2D:
   m_ObjectHideFlags: 0

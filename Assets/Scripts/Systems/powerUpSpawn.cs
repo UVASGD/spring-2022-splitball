@@ -7,7 +7,8 @@ public class powerUpSpawn : MonoBehaviour
     //array of all spawn points
     //genrealyl give it blank objects to pull x y from to spawn powerups
 
-    public GameObject[] activators = new GameObject[0]; //Attach buttons/switches here
+    public GameObject[] activators = new GameObject[0];
+    bool[] trackers;//used to track which spawn points for power ups have been used
 
     //list of all powerups that can spawn. putting naything else in here will spawn it and idk what that will do
     public GameObject[] spawners = new GameObject[0];
@@ -23,18 +24,21 @@ public class powerUpSpawn : MonoBehaviour
     public static int spawnedPowerUps = 0;
     //chance to increase powerup spawn each time after it doesn't
     public int increaseChance = 15;
+    //max number of power ups displayed at once
+    public int maxOf = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         spawnedPowerUps = 0;
         spawnChanceHolder = spawnChance;
+        trackers = new bool[activators.Length];
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (spawnedPowerUps == 0)
+        if (spawnedPowerUps < maxOf)
         {
             spawnTimer += Time.deltaTime;
 
@@ -51,10 +55,21 @@ public class powerUpSpawn : MonoBehaviour
                     spawnChance = spawnChanceHolder;
 
                     //get random place and random powerup and spawn it
-                    int randomplace = Random.Range(0, activators.Length);
+
+                    int randomplace;
+                    while (true)
+                    {
+                        randomplace = Random.Range(0, activators.Length);
+                        if(trackers[randomplace]!=true)
+                        {
+                            trackers[randomplace] = true;
+                            break;
+                        }
+                    }
+
                     int randomthing = Random.Range(0, spawners.Length);
                     Instantiate(spawners[randomthing], activators[randomplace].GetComponent<Transform>().position, activators[randomplace].GetComponent<Transform>().rotation);
-
+                    
 
                 }
                 else

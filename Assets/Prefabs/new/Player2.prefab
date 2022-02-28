@@ -413,6 +413,7 @@ MonoBehaviour:
   ballEntered2: 0
   timeToDie: 0
   healPower: 20
+  balloon: 0
 --- !u!114 &3196339885568989300
 MonoBehaviour:
   m_ObjectHideFlags: 0
