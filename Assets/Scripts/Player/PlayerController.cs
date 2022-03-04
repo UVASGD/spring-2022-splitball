@@ -57,6 +57,8 @@ public class PlayerController : Destructible
     //Status
     public bool balloon = false;
     float balloonTimer = 0.0f;
+    public bool frozen = false;
+    float freezeTimer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -71,8 +73,11 @@ public class PlayerController : Destructible
     void Update()
     {
         if (gm.isActive) {
-                        
-            movement = new Vector2(Input.GetAxis("Horizontal1"), Input.GetAxis("Vertical1"));
+
+
+         
+                movement = new Vector2(Input.GetAxis("Horizontal1"), Input.GetAxis("Vertical1"));
+                 
             fire = Input.GetKeyDown("q");
             aim = rb2d.velocity.normalized;
             //   InvokeRepeating("RegenerateStamina", 0f, .5f);
@@ -97,10 +102,19 @@ public class PlayerController : Destructible
             stats.dashes -= 1;
         }
 
+        if (!frozen)
+           rb2d.AddForce(movement * movePower);
+        else
+         {
+           freezeTimer += Time.deltaTime;
+          if (freezeTimer >= .94f)
+           {
+               frozen = false;
+                freezeTimer = 0.0f;
+             }    
+          }
 
-        rb2d.AddForce(movement * movePower);
-      
-        if(rb2d.velocity.magnitude > currentMaxSpeed){
+        if (rb2d.velocity.magnitude > currentMaxSpeed){
             //note: using velocity makes it easily push physics objects away instead of bouncing off of them (as intended)2
                 rb2d.velocity = rb2d.velocity.normalized * currentMaxSpeed;
         }
@@ -167,6 +181,15 @@ public class PlayerController : Destructible
             powerUpSpawn.spawnedPowerUps -= 1;
             col.gameObject.SetActive(false);
             Debug.Log("Speedi Boi");
+        }
+
+        if (col.gameObject.name == "Freeze(Clone)")
+        {
+            GameObject.Find("Player2").GetComponent<Player2Controler>().frozen = true;
+          //  GetComponent<AudioSource>().Play();
+
+            powerUpSpawn.spawnedPowerUps -= 1;
+            col.gameObject.SetActive(false);
         }
 
         if (col.gameObject.name.Equals("BoostPad(Clone)"))

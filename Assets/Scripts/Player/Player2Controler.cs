@@ -57,6 +57,9 @@ public class Player2Controler : Destructible
     //Status
     public bool balloon = false;
     float balloonTimer = 0.0f;
+    public bool frozen = false;
+    float freezeTimer = 0.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -96,7 +99,17 @@ public class Player2Controler : Destructible
             stats.dashes -= 1;
         }
 
+        if(!frozen)
         rb2d.AddForce(movement * movePower);
+        else
+        {
+            freezeTimer += Time.deltaTime;
+            if (freezeTimer >= .94f)
+            {
+                frozen = false;
+                freezeTimer = 0.0f;
+            }
+        }
 
         if (rb2d.velocity.magnitude > currentMaxSpeed)
         {
@@ -170,6 +183,14 @@ public class Player2Controler : Destructible
             Debug.Log("Speedi Boi");
         }
 
+        if (col.gameObject.name == "Freeze(Clone)")
+        {
+            GameObject.Find("Player2").GetComponent<Player2Controler>().frozen = true;
+            GetComponent<AudioSource>().Play();
+
+            powerUpSpawn.spawnedPowerUps -= 1;
+            col.gameObject.SetActive(false);
+        }
 
         if (col.gameObject.name.Equals("Balloon(Clone)"))
         {
@@ -179,7 +200,6 @@ public class Player2Controler : Destructible
             col.gameObject.SetActive(false);
             powerUpSpawn.spawnedPowerUps -= 1;
         }
-
 
         if (col.gameObject.name.Equals("BoostPad(Clone)"))
         {
