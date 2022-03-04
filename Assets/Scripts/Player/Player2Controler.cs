@@ -8,7 +8,6 @@ public class Player2Controler : Destructible
 {
 
     //TODOS FROM PlayerMovement.cs
-    //Magnet powerup
     //max speed (both for dash and normal, consider a deacceleration of maxSpeed after a dash?)
     //delete PlayerMovement once done
 
@@ -26,6 +25,7 @@ public class Player2Controler : Destructible
 
     //im sorta copying this from last year's project im 90% sure some of it is not necessary
     Rigidbody2D rb2d;
+    PlayerData stats;
     public float currentMaxSpeed;
     public float maxMoveSpeed = 10f;
     public float maxDashSpeed = 20f;
@@ -33,8 +33,6 @@ public class Player2Controler : Destructible
     public float dashCD = 1f;
     public float lastDash = 0f;
     public float dashPower = 10f;
-    public GameObject crosshairs;
-    public float crosshairDistance = 4;
     public Sprite neutral;
     public Sprite dash;
     public Transform pos;
@@ -56,9 +54,14 @@ public class Player2Controler : Destructible
     // Heal
     public float healPower = 20f;
 
+    //Status
+    public bool balloon = false;
+    float balloonTimer = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
+        stats = GetComponent<PlayerData>();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         RecallActive = false;
@@ -69,9 +72,9 @@ public class Player2Controler : Destructible
     {
         if (gm.isActive) {
             movement = new Vector2(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"));
-            aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            //fire = Input.GetMouseButton(0);  
-           // InvokeRepeating("RegenerateStamina", 0f, .5f);
+            fire = Input.GetKey("u");
+            aim = rb2d.velocity.normalized;
+            //   InvokeRepeating("RegenerateStamina", 0f, .5f);
         }
         iFrameCounter += Time.deltaTime;
         lastDash += Time.deltaTime;
@@ -79,45 +82,64 @@ public class Player2Controler : Destructible
     }
 
     void FixedUpdate() {
-        
+
         //NOTE FOR FUTURE DEVELOPING:
         //to make a "dash" use rb2d.AddForce(new Vector2(speed,speed), ForceMode2D.Impulse)
 
-        if(fire && lastDash >= dashCD){
+        if (fire && lastDash >= dashCD && stats.dashes != 0)
+        {
             StartCoroutine(Deccelerate());
             AudioSource.PlayClipAtPoint(clips[0], transform.position);
-            rb2d.velocity = new Vector2(0,0);
-            rb2d.AddForce(aim.normalized * crosshairDistance * dashPower, ForceMode2D.Impulse);
+            rb2d.velocity = new Vector2(0, 0);
+            rb2d.AddForce(aim.normalized * dashPower, ForceMode2D.Impulse);
             lastDash = 0f;
+            stats.dashes -= 1;
         }
-
 
         rb2d.AddForce(movement * movePower);
-        //rb2d.velocity += (.00000001 + movement) * movePower;
-        //if(Vector2.magnitude(rb2d.velocity) > maxSpee)
-        if(rb2d.velocity.magnitude > currentMaxSpeed){
-            //note: using velocity makes it easily push physics objects away instead of bouncing off of them (as intended)2
-                rb2d.velocity = rb2d.velocity.normalized * currentMaxSpeed;
-        }
 
-		Debug.DrawRay(transform.position, aim.normalized * crosshairDistance, Color.red);
+        if (rb2d.velocity.magnitude > currentMaxSpeed)
+        {
+            //note: using velocity makes it easily push physics objects away instead of bouncing off of them (as intended)2
+            rb2d.velocity = rb2d.velocity.normalized * currentMaxSpeed;
+        }
 
         Vector2 dir = rb2d.velocity;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         animator.SetFloat("Angle", angle);
         animator.SetFloat("VelMag", rb2d.velocity.magnitude);
-		// position crosshairs
-		//if(aim.magnitude < crosshairDistance) { 
-			//crosshairs.transform.position = (Vector2) transform.position + aim;
-		//} else {
-		crosshairs.transform.position = (Vector2) transform.position + (aim.normalized * crosshairDistance);
-		//}
-	}
+
+        if (balloon == true)
+            ballooning();
+    }
+
+    private void ballooning()
+    {
+        if (balloonTimer <= 2.22f)
+        {
+            if (rb2d.transform.localScale.x < 1.76f)
+            {
+                rb2d.transform.localScale += new Vector3(0.02f, 0.02f, 0.0f);
+            }
+            else
+                balloonTimer += Time.deltaTime;
+        }
+        else
+        {
+            rb2d.transform.localScale -= new Vector3(0.02f, 0.02f, 0.0f);
+        }
+
+        if (rb2d.transform.localScale.x == 1)
+        {
+            balloonTimer=0.0f;
+            balloon = false;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        //checks if powerup
+        //checks if powerup at all
         if (collision.gameObject.tag == "Boost")
         {
             checkPowerUp(collision);
@@ -132,18 +154,39 @@ public class Player2Controler : Destructible
 
 
     //New powerups implimented here (and other controler)
-    //TODO fix audio
+    //TODO fix/add audio, may be better to add onto the power up itself
+    //where to add power up code
     private void checkPowerUp(Collider2D col)
     {
+        //adds to dahses 
         if (col.gameObject.name == "Boost(Clone)")
         {
-            GetComponent<AudioSource>().Play();
-            StartCoroutine(PowerUp(10f));
-            col.gameObject.SetActive(false);
+            stats.dashes += 1;
+            //GetComponent<AudioSource>().Play();
 
             powerUpSpawn.spawnedPowerUps -= 1;
-
+            col.gameObject.SetActive(false);
             Debug.Log("Speedi Boi");
+        }
+
+
+        if (col.gameObject.name.Equals("Balloon(Clone)"))
+        {
+            //GetComponent<AudioSource>().Play();
+            GameObject.Find("Player").GetComponent<PlayerController>().balloon = true;
+
+            col.gameObject.SetActive(false);
+            powerUpSpawn.spawnedPowerUps -= 1;
+        }
+
+
+        if (col.gameObject.name.Equals("BoostPad(Clone)"))
+        {
+            //GetComponent<AudioSource>().Play();
+            Instantiate(col.GetComponent<boostPadHolder>().boostPad, GameObject.Find("Player").GetComponent<Transform>().position, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));           
+
+            col.gameObject.SetActive(false);
+            powerUpSpawn.spawnedPowerUps -= 1;
         }
 
         if (col.gameObject.name == "Heal")

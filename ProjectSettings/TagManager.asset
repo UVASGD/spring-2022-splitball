@@ -10,6 +10,7 @@ TagManager:
   - Boost
   - Recall
   - Heal
+  - BoostPad
   layers:
   - Default
   - TransparentFX

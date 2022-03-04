@@ -24,7 +24,7 @@ public class battleCollison : MonoBehaviour
             if (gameObject.name == "Player2")
             {
                 PlayerData.player1score += 1;
-                gameObject.GetComponent<PlayerController>().Die();
+                gameObject.GetComponent<Player2Controler>().Die();
                 GameManager.loserFound = true;
             }
 
