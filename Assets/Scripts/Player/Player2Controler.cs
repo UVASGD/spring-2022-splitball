@@ -38,8 +38,8 @@ public class Player2Controler : Destructible
     public Transform pos;
 
     //iframes
-    public float iFrameCounter = 0f; //the one that counts up
-    public float iFrameDuration; //how long they are invicinble after being attacked
+  //  public float iFrameCounter = 0f; //the one that counts up
+  //  public float iFrameDuration; //how long they are invicinble after being attacked
 
     //power ups/commnads
     public bool RecallActive = false;
@@ -49,10 +49,10 @@ public class Player2Controler : Destructible
     public bool ballEntered2 = false;
 
     //DEATH
-    public float timeToDie;
+    public float timeToDie = 1.37f;
 
     // Heal
-    public float healPower = 20f;
+   // public float healPower = 20f;
 
     //Status
     public bool balloon = false;
@@ -64,7 +64,7 @@ public class Player2Controler : Destructible
         stats = GetComponent<PlayerData>();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        RecallActive = false;
+      //  RecallActive = false;
     }
 
     // Update is called once per frame
@@ -72,11 +72,11 @@ public class Player2Controler : Destructible
     {
         if (gm.isActive) {
             movement = new Vector2(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"));
-            fire = Input.GetKey("u");
+            fire = Input.GetKeyDown("u");
             aim = rb2d.velocity.normalized;
             //   InvokeRepeating("RegenerateStamina", 0f, .5f);
         }
-        iFrameCounter += Time.deltaTime;
+     //   iFrameCounter += Time.deltaTime;
         lastDash += Time.deltaTime;
 
     }
@@ -144,12 +144,13 @@ public class Player2Controler : Destructible
         {
             checkPowerUp(collision);
         }
-
+        /*
         if (collision.gameObject.tag == "Recall")
         {
             RecallActive = true;
             collision.gameObject.SetActive(false);
         }
+        */
     }
 
 
@@ -188,7 +189,7 @@ public class Player2Controler : Destructible
             col.gameObject.SetActive(false);
             powerUpSpawn.spawnedPowerUps -= 1;
         }
-
+        /*
         if (col.gameObject.name == "Heal")
         {
             Debug.Log("Heal");
@@ -196,10 +197,11 @@ public class Player2Controler : Destructible
             AudioSource.PlayClipAtPoint(clips[5], transform.position);
             col.gameObject.SetActive(false);
         }
+        */
     }
 
 
-
+    /*
     public override void Heal(float amount) {
         float sum = this.hitPoints += amount;
         if (sum >= maxHealth) {
@@ -210,12 +212,13 @@ public class Player2Controler : Destructible
         }
         gm.UpdateHealth(hitPoints);
     }
-
+    */
     private void OnCollisionEnter2D(Collision2D col){
         //if we hit anything we go "ping"
         AudioSource.PlayClipAtPoint(clips[1], transform.position);
     }
-
+   
+    /*
     IEnumerator PowerUp(float duration) {
         movePower += 5f;
         maxMoveSpeed += 5f;
@@ -227,6 +230,7 @@ public class Player2Controler : Destructible
         currentMaxSpeed -= 5f;
         movePower -= 5f;
     }
+    */
 
     IEnumerator Deccelerate() {
         currentMaxSpeed = maxDashSpeed;
@@ -247,9 +251,10 @@ public class Player2Controler : Destructible
     IEnumerator StartDying(){
         yield return new WaitForSeconds(timeToDie);
         gm.isActive = false;
-        SceneManager.LoadScene("Defeat");
+        SceneManager.LoadScene("Bunker");
+        //    SceneManager.LoadScene("Defeat");
     }
-
+    /*
     IEnumerator Flash(float x) {
     while(iFrameCounter < iFrameDuration) {
         GetComponent<SpriteRenderer>().enabled = false;
@@ -258,8 +263,8 @@ public class Player2Controler : Destructible
         yield return new WaitForSeconds(x);
      }
  }
-
-
+    
+    
     public override void TakeDamage(float amount)
     {
         if(iFrameCounter > iFrameDuration){
@@ -275,7 +280,7 @@ public class Player2Controler : Destructible
             }
         }
     }
-
+    */
     public void RegenerateStamina() {
         gm.UpdateStamina(lastDash);
     }

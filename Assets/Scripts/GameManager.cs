@@ -8,7 +8,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     //gameObjects
-    public GameObject ball;
+   // public GameObject ball;
     public GameObject player;
     public GameObject player2;
     public static bool loserFound;
@@ -31,8 +31,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(PlayerData.player1score);
-        Debug.Log(PlayerData.player2score);
+        
         loserFound = false;
         try {
             startButton.gameObject.GetComponent<Button>();
@@ -114,9 +113,11 @@ public class GameManager : MonoBehaviour
         player2.GetComponent<battleCollison>().OnTriggerEnter2D(player.GetComponent<Collider2D>());
         if(loserFound == true)
         {
+            isActive = false;
             resetForScene();
             //TODO make this random
-            SceneManager.LoadScene("bunker");
+            //ported to player controllers so to let animation play out
+           // SceneManager.LoadScene("Bunker");
         }
     }
 
@@ -173,7 +174,7 @@ public class GameManager : MonoBehaviour
     public void ExitGame() {
         Application.Quit();
     }
-
+    /*
     public void UpdateHealth(float health) {
         if (health <= 0){
             healthBar.value = 0f;
@@ -181,7 +182,7 @@ public class GameManager : MonoBehaviour
         }
         healthBar.value = health;
     }
-
+    */
     public void UpdateStamina(float stamina) {
         if (stamina <= 0) {
             dashBar.value = 0f;

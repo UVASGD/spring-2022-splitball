@@ -38,21 +38,21 @@ public class PlayerController : Destructible
     public Transform pos;
 
     //iframes
-    public float iFrameCounter = 0f; //the one that counts up
-    public float iFrameDuration; //how long they are invicinble after being attacked
+  //  public float iFrameCounter = 0f; //the one that counts up
+  //  public float iFrameDuration; //how long they are invicinble after being attacked
 
     //power ups/commnads
-    public bool RecallActive = false;
+   public bool RecallActive = false;
 
     // Bool portal
     public bool ballEntered1 = false;
     public bool ballEntered2 = false;
 
     //DEATH
-    public float timeToDie;
+    public float timeToDie = 1.37f;
 
     // Heal
-    public float healPower = 20f;
+   // public float healPower = 20f;
 
     //Status
     public bool balloon = false;
@@ -64,7 +64,7 @@ public class PlayerController : Destructible
         stats = GetComponent<PlayerData>();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        RecallActive = false;
+   //     RecallActive = false;
     }
 
     // Update is called once per frame
@@ -73,12 +73,12 @@ public class PlayerController : Destructible
         if (gm.isActive) {
                         
             movement = new Vector2(Input.GetAxis("Horizontal1"), Input.GetAxis("Vertical1"));
-            fire = Input.GetKey("q");
+            fire = Input.GetKeyDown("q");
             aim = rb2d.velocity.normalized;
             //   InvokeRepeating("RegenerateStamina", 0f, .5f);
 
         }
-        iFrameCounter += Time.deltaTime;
+     //   iFrameCounter += Time.deltaTime;
         lastDash += Time.deltaTime;
 
     }
@@ -144,11 +144,12 @@ public class PlayerController : Destructible
         {
             checkPowerUp(collision);
         }
-
+        /*
         if (collision.gameObject.tag == "Recall" ) {
             RecallActive = true;
             collision.gameObject.SetActive(false);
         }
+        */
     }
 
 
@@ -186,33 +187,34 @@ public class PlayerController : Destructible
             powerUpSpawn.spawnedPowerUps -= 1;
         }
 
+        /*
+                if (col.gameObject.name == "Heal")
+                {
+                    Debug.Log("Heal");
+                    Heal(healPower);
+                    AudioSource.PlayClipAtPoint(clips[5], transform.position);
+                    col.gameObject.SetActive(false);
+                }
+        */
+            }
 
-        if (col.gameObject.name == "Heal")
-        {
-            Debug.Log("Heal");
-            Heal(healPower);
-            AudioSource.PlayClipAtPoint(clips[5], transform.position);
-            col.gameObject.SetActive(false);
-        }
-    }
-
-
-    public override void Heal(float amount) {
-        float sum = this.hitPoints += amount;
-        if (sum >= maxHealth) {
-            this.hitPoints = maxHealth;
-        }
-        else {
-            this.hitPoints = sum;
-        }
-        gm.UpdateHealth(hitPoints);
-    }
-
-    private void OnCollisionEnter2D(Collision2D col){
+            /*
+            public override void Heal(float amount) {
+                float sum = this.hitPoints += amount;
+                if (sum >= maxHealth) {
+                    this.hitPoints = maxHealth;
+                }
+                else {
+                    this.hitPoints = sum;
+                }
+                gm.UpdateHealth(hitPoints);
+            }
+            */
+        private void OnCollisionEnter2D(Collision2D col){
         //if we hit anything we go "ping"
         AudioSource.PlayClipAtPoint(clips[1], transform.position);
     }
-
+    /*
     IEnumerator PowerUp(float duration) {
         movePower += 5f;
         maxMoveSpeed += 5f;
@@ -224,6 +226,7 @@ public class PlayerController : Destructible
         currentMaxSpeed -= 5f;
         movePower -= 5f;
     }
+    */
 
     IEnumerator Deccelerate() {
         currentMaxSpeed = maxDashSpeed;
@@ -244,9 +247,10 @@ public class PlayerController : Destructible
     IEnumerator StartDying(){
         yield return new WaitForSeconds(timeToDie);
         gm.isActive = false;
-        SceneManager.LoadScene("Defeat");
+        //        SceneManager.LoadScene("Defeat");
+                SceneManager.LoadScene("Bunker");
     }
-
+    /*
     IEnumerator Flash(float x) {
     while(iFrameCounter < iFrameDuration) {
         GetComponent<SpriteRenderer>().enabled = false;
@@ -256,7 +260,7 @@ public class PlayerController : Destructible
      }
  }
 
-
+    
     public override void TakeDamage(float amount)
     {
         if(iFrameCounter > iFrameDuration){
@@ -272,7 +276,7 @@ public class PlayerController : Destructible
             }
         }
     }
-
+    */
     public void RegenerateStamina() {
         gm.UpdateStamina(lastDash);
     }

@@ -190,6 +190,11 @@ PrefabInstance:
       propertyPath: gm
       value: 
       objectReference: {fileID: 1232749713}
+    - target: {fileID: 3196339885568989303, guid: e8ce594fd52c6b84899ff05c175f7ce3,
+        type: 3}
+      propertyPath: timeToDie
+      value: 1.37
+      objectReference: {fileID: 0}
     - target: {fileID: 6922299561118401505, guid: e8ce594fd52c6b84899ff05c175f7ce3,
         type: 3}
       propertyPath: m_RootOrder
