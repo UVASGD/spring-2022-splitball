@@ -2753,7 +2753,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 40, y: 28}
+  m_Size: {x: 125.9, y: 28}
   m_EdgeRadius: 0
 --- !u!4 &390261132
 Transform:
@@ -2933,7 +2933,7 @@ PrefabInstance:
     - target: {fileID: 1478793117193559095, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: orthographic size
-      value: 10.612951
+      value: 10.211177
       objectReference: {fileID: 0}
     - target: {fileID: 1478793117193559240, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
