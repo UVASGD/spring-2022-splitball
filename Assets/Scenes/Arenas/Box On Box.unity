@@ -162,7 +162,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 40, y: 40}
+  m_Size: {x: 74.91, y: 40}
   m_EdgeRadius: 0
 --- !u!4 &6514462
 Transform:
@@ -190,6 +190,11 @@ PrefabInstance:
       propertyPath: gm
       value: 
       objectReference: {fileID: 1232749713}
+    - target: {fileID: 3196339885568989303, guid: e8ce594fd52c6b84899ff05c175f7ce3,
+        type: 3}
+      propertyPath: timeToDie
+      value: 1.37
+      objectReference: {fileID: 0}
     - target: {fileID: 6922299561118401505, guid: e8ce594fd52c6b84899ff05c175f7ce3,
         type: 3}
       propertyPath: m_RootOrder
@@ -819,7 +824,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 53
-      m_TileSpriteIndex: 53
+      m_TileSpriteIndex: 59
       m_TileMatrixIndex: 3
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2819,9 +2824,8 @@ Tilemap:
   - m_RefCount: 45
     m_Data: {fileID: -6552554817133073059, guid: d2081d359afbb11478a746a2cf12c241,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -6352421306348655983, guid: d2081d359afbb11478a746a2cf12c241,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -2477652884062624638, guid: d2081d359afbb11478a746a2cf12c241,
       type: 3}
@@ -2837,8 +2841,9 @@ Tilemap:
   - m_RefCount: 31
     m_Data: {fileID: -2032783616916153257, guid: d2081d359afbb11478a746a2cf12c241,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -6352421306348655983, guid: d2081d359afbb11478a746a2cf12c241,
+      type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 4695601621151863366, guid: d2081d359afbb11478a746a2cf12c241,
       type: 3}
@@ -3074,7 +3079,7 @@ PrefabInstance:
     - target: {fileID: 1478793117193559095, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: orthographic size
-      value: 10.612951
+      value: 7.4249854
       objectReference: {fileID: 0}
     - target: {fileID: 1478793117193559240, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
