@@ -66,7 +66,8 @@ public class PlayerController : Destructible
         stats = GetComponent<PlayerData>();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-   //     RecallActive = false;
+
+        //     RecallActive = false;
     }
 
     // Update is called once per frame
@@ -77,14 +78,15 @@ public class PlayerController : Destructible
 
          
                 movement = new Vector2(Input.GetAxis("Horizontal1"), Input.GetAxis("Vertical1"));
-                 
-            fire = Input.GetKeyDown("q");
+               
+            fire = Input.GetKey("q");
             aim = rb2d.velocity.normalized;
-            //   InvokeRepeating("RegenerateStamina", 0f, .5f);
+            InvokeRepeating("RegenerateStamina", 0f, .5f);
 
+            lastDash += Time.deltaTime;
         }
      //   iFrameCounter += Time.deltaTime;
-        lastDash += Time.deltaTime;
+      
 
     }
 
@@ -301,6 +303,6 @@ public class PlayerController : Destructible
     }
     */
     public void RegenerateStamina() {
-        gm.UpdateStamina(lastDash);
+        gm.UpdateStamina1(lastDash);
     }
 }
