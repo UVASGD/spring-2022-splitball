@@ -183,8 +183,18 @@ public class Player2Controler : Destructible
 
             powerUpSpawn.spawnedPowerUps -= 1;
             col.gameObject.SetActive(false);
-            Debug.Log("Speedi Boi");
         }
+
+
+        if (col.gameObject.name == "Shoot(Clone)")
+        {
+            //GetComponent<AudioSource>().Play();
+
+            powerUpSpawn.spawnedPowerUps -= 1;
+            col.gameObject.GetComponent<ShootPowerUp>().Fire(1);
+            col.gameObject.SetActive(false);
+        }
+
 
         if (col.gameObject.name == "Freeze(Clone)")
         {

@@ -32,5 +32,27 @@ public class battleCollison : MonoBehaviour
             //              increase player one score. 
             //            die. 
         }
+        else if(collision.gameObject.name == "bulletPowerUp(Clone)")
+        {
+            if (gameObject.name == "Player")
+            {
+                if (collision.gameObject.GetComponent<bulletFirePowerup>().Friendly != 1)
+                {
+                    PlayerData.player2score += 1;
+                    gameObject.GetComponent<PlayerController>().Die();
+                    GameManager.loserFound = true;
+                }
+            }
+            else if (gameObject.name == "Player2")
+                {
+                    if (collision.gameObject.GetComponent<bulletFirePowerup>().Friendly != 2)
+                    {
+                        PlayerData.player1score += 1;
+                        gameObject.GetComponent<Player2Controler>().Die();
+                        GameManager.loserFound = true;
+                    }
+                }
+
+        }
     }
 }
