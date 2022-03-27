@@ -8,7 +8,7 @@ public class powerUpSpawn : MonoBehaviour
     //genrealyl give it blank objects to pull x y from to spawn powerups
 
     public GameObject[] activators = new GameObject[0];
-    bool[] trackers;//used to track which spawn points for power ups have been used
+    static bool[] trackers;//used to track which spawn points for power ups have been used
 
     //list of all powerups that can spawn. putting naything else in here will spawn it and idk what that will do
     public GameObject[] spawners = new GameObject[0];
@@ -33,6 +33,11 @@ public class powerUpSpawn : MonoBehaviour
         spawnedPowerUps = 0;
         spawnChanceHolder = spawnChance;
         trackers = new bool[activators.Length];
+    }
+
+    public static void emptySpace (int remove)
+    {
+        trackers[remove] = false;
     }
 
     // Update is called once per frame

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4752667234170561024}
   - component: {fileID: 4752667234170561031}
   - component: {fileID: 4752667234170561030}
+  - component: {fileID: 2814649832405875397}
   m_Layer: 0
   m_Name: Boost
   m_TagString: Boost
@@ -98,3 +99,16 @@ CircleCollider2D:
   m_Offset: {x: 0.03001833, y: 0.022798777}
   serializedVersion: 2
   m_Radius: 1.589916
+--- !u!114 &2814649832405875397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752667234170561029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d020017fbbec7044b1955fb6799ec0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: 0

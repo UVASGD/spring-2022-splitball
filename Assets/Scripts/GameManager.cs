@@ -25,8 +25,14 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI aboutText;
     public Button backButton;
 
-    public Slider healthBar;
-    public Slider dashBar;
+    public Slider switchBarLeft;
+    public Slider switchBarRight;
+    public Slider dashBar1;
+    public Slider dashBar2;
+
+    //Timer for switch
+    public float lastSwitch = 0f;
+    public float switchCD = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,9 +40,10 @@ public class GameManager : MonoBehaviour
         
         loserFound = false;
         try {
+            
             startButton.gameObject.GetComponent<Button>();
             startButton.onClick.AddListener(StartGame);
-
+            /*
             exitButton.gameObject.GetComponent<Button>();
             exitButton.onClick.AddListener(ExitGame);
 
@@ -48,9 +55,12 @@ public class GameManager : MonoBehaviour
 
             backButton.gameObject.GetComponent<Button>();
             backButton.onClick.AddListener(back);
+            */
+            switchBarLeft.gameObject.GetComponent<Slider>();
+            switchBarRight.gameObject.GetComponent<Slider>();
+            dashBar1.gameObject.GetComponent<Slider>();
+            dashBar2.gameObject.GetComponent<Slider>();
 
-            healthBar.gameObject.GetComponent<Slider>();
-            dashBar.gameObject.GetComponent<Slider>();
         }
         catch {
 
@@ -91,19 +101,29 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         //checks condition to win, should be different for each kind of game
         //TODO allow player to fizzle out and die before switching to next scene, play animation adding to score
-      checkWin();
-        //should be constant
-        if(Input.GetKey("escape")){
-            Application.Quit();
-        }
-        if(Input.GetKeyUp("space"))
+        if (isActive)
         {
-            //make multipler a variable that can be powered up or strengthens over time
-            Vector2 dir = player.GetComponent<Rigidbody2D>().velocity;
-            player.GetComponent<Rigidbody2D>().velocity = player2.GetComponent<Rigidbody2D>().velocity *2;
-            player2.GetComponent<Rigidbody2D>().velocity = dir *2;
+            lastSwitch += Time.deltaTime;
+
+            checkWin();
+            //should be constant
+            if (Input.GetKey("escape"))
+            {
+                Application.Quit();
+            }
+            if (Input.GetKeyUp("space") && lastSwitch >= switchCD)
+            {
+                //make multipler a variable that can be powered up or strengthens over time
+                Vector2 dir = player.GetComponent<Rigidbody2D>().velocity;
+                player.GetComponent<Rigidbody2D>().velocity = player2.GetComponent<Rigidbody2D>().velocity * 2;
+                player2.GetComponent<Rigidbody2D>().velocity = dir * 2;
+                lastSwitch = 0f;
+            }
+
+            InvokeRepeating("UpdateSwitch", 0f, .5f);
         }
     }
     //update this with rules of game
@@ -146,8 +166,10 @@ public class GameManager : MonoBehaviour
     public void StartGame() {
         isActive = true;
         try {
-            healthBar.gameObject.SetActive(true);
-            dashBar.gameObject.SetActive(true);
+            switchBarLeft.gameObject.SetActive(true);
+            switchBarRight.gameObject.SetActive(true);
+            dashBar1.gameObject.SetActive(true);
+            dashBar2.gameObject.SetActive(true);
         }
         catch {}
         Scene scene = SceneManager.GetActiveScene();
@@ -183,12 +205,40 @@ public class GameManager : MonoBehaviour
         healthBar.value = health;
     }
     */
-    public void UpdateStamina(float stamina) {
+    public void UpdateStamina1(float stamina) {
         if (stamina <= 0) {
-            dashBar.value = 0f;
+            dashBar1.value = 0f;
             return;
         }
-        dashBar.value = stamina;
+        dashBar1.value = stamina;
     }
 
+    public void UpdateStamina2(float stamina)
+    {
+        if (stamina <= 0)
+        {
+            dashBar2.value = 0f;
+            return;
+        }
+        dashBar2.value = stamina;
+    }
+
+
+    public void UpdateSwitch()
+    {
+        float stamina = lastSwitch / switchCD;
+
+        if (stamina <= 0)
+        {
+            switchBarRight.value = 0f;
+            switchBarLeft.value = 0f;
+            return;
+        }
+    
+        else
+        {
+            switchBarRight.value = stamina;
+            switchBarLeft.value = stamina;
+        }
+    }
 }
