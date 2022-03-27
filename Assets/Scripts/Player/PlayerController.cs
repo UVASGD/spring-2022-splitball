@@ -56,9 +56,11 @@ public class PlayerController : Destructible
 
     //Status
     public bool balloon = false;
-    float balloonTimer = 0.0f;
+    public float balloonTimer = 0.0f;
     public bool frozen = false;
-    float freezeTimer = 0.0f;
+    public float freezeTimer = 0.0f;
+    public bool reverse = false; 
+    public float reverseTimer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -105,11 +107,22 @@ public class PlayerController : Destructible
         }
 
         if (!frozen)
-           rb2d.AddForce(movement * movePower);
+            if (!reverse)
+                rb2d.AddForce(movement * movePower);
+            else
+            {
+                reverseTimer += Time.deltaTime;
+                if (reverseTimer >= 2.0f)
+                {
+                    reverse = false;
+                    reverseTimer = 0.0f;
+                }
+                rb2d.AddForce(-1 * movement * movePower);
+            }
         else
          {
            freezeTimer += Time.deltaTime;
-          if (freezeTimer >= .94f)
+          if (freezeTimer >= .9f)
            {
                frozen = false;
                 freezeTimer = 0.0f;
@@ -132,9 +145,9 @@ public class PlayerController : Destructible
 
     private void ballooning()
     {
-        if (balloonTimer <= 2.22f)
+        if (balloonTimer <= 2.25f)
         {
-            if (rb2d.transform.localScale.x < 1.76f)
+            if (rb2d.transform.localScale.x < 1.75f)
             {
                 rb2d.transform.localScale += new Vector3(0.02f, 0.02f, 0.0f);
             }
@@ -181,48 +194,71 @@ public class PlayerController : Destructible
             //GetComponent<AudioSource>().Play();
 
             powerUpSpawn.spawnedPowerUps -= 1;
-            col.gameObject.SetActive(false);
+
+
+            powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);
+            Destroy(col.gameObject);
         }
 
 
-        if (col.gameObject.name == "Shoot(Clone)")
+        else if (col.gameObject.name == "Shoot(Clone)")
         {
             //GetComponent<AudioSource>().Play();
 
             powerUpSpawn.spawnedPowerUps -= 1;
 
             col.gameObject.GetComponent<ShootPowerUp>().Fire(2);
-            col.gameObject.SetActive(false);
+
+            powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);
+            Destroy(col.gameObject);
         }
 
 
 
-        if (col.gameObject.name == "Freeze(Clone)")
+        else if (col.gameObject.name == "Freeze(Clone)")
         {
             GameObject.Find("Player2").GetComponent<Player2Controler>().frozen = true;
-          //  GetComponent<AudioSource>().Play();
+            GameObject.Find("Player2").GetComponent<Player2Controler>().freezeTimer = 0.0f;
+            //  GetComponent<AudioSource>().Play();
 
             powerUpSpawn.spawnedPowerUps -= 1;
-            col.gameObject.SetActive(false);
+            powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);
+            Destroy(col.gameObject);
+        }
+
+        else if (col.gameObject.name == "Reverse(Clone)")
+        {
+            GameObject.Find("Player2").GetComponent<Player2Controler>().reverse = true;
+            GameObject.Find("Player2").GetComponent<Player2Controler>().reverseTimer = 0.0f;
+            //  GetComponent<AudioSource>().Play();
+
+            powerUpSpawn.spawnedPowerUps -= 1;
+
+            powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);
+            Destroy(col.gameObject);
         }
 
 
-        if (col.gameObject.name.Equals("BoostPad(Clone)"))
+        else if (col.gameObject.name.Equals("BoostPad(Clone)"))
         {
             //GetComponent<AudioSource>().Play();
             Instantiate(col.GetComponent<boostPadHolder>().boostPad, GameObject.Find("Player2").GetComponent<Transform>().position, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));
 
-            col.gameObject.SetActive(false);
             powerUpSpawn.spawnedPowerUps -= 1;
+
+            powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);
+            Destroy(col.gameObject);
         }
 
-        if (col.gameObject.name.Equals("Balloon(Clone)"))
+        else if (col.gameObject.name.Equals("Balloon(Clone)"))
         {
             //GetComponent<AudioSource>().Play();
             GameObject.Find("Player2").GetComponent<Player2Controler>().balloon = true;
 
-            col.gameObject.SetActive(false);
             powerUpSpawn.spawnedPowerUps -= 1;
+
+            powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);
+            Destroy(col.gameObject);
         }
 
         /*
@@ -234,7 +270,7 @@ public class PlayerController : Destructible
                     col.gameObject.SetActive(false);
                 }
         */
-            }
+    }
 
             /*
             public override void Heal(float amount) {
@@ -286,7 +322,10 @@ public class PlayerController : Destructible
         yield return new WaitForSeconds(timeToDie);
         gm.isActive = false;
         //        SceneManager.LoadScene("Defeat");
-                SceneManager.LoadScene("Bunker");
+        //scenes have to be added to build path in the file->build->add scene path and level range should be changed
+        //should be one higher than last build number of levels
+        int levelGen = UnityEngine.Random.Range(3, 6);
+                SceneManager.LoadScene(levelGen);
     }
     /*
     IEnumerator Flash(float x) {

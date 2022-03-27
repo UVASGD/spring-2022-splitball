@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2603816727686152352}
   - component: {fileID: 2603816727686152359}
   - component: {fileID: 2603816727686152358}
+  - component: {fileID: -8825368539993175066}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Boost
@@ -98,3 +99,16 @@ CircleCollider2D:
   m_Offset: {x: 0.03001833, y: 0.022798777}
   serializedVersion: 2
   m_Radius: 1.589916
+--- !u!114 &-8825368539993175066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603816727686152357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d020017fbbec7044b1955fb6799ec0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: 0

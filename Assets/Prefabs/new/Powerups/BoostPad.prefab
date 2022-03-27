@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 66574162644784863}
   - component: {fileID: 66574162644784862}
   - component: {fileID: 4690597358312174003}
+  - component: {fileID: 4119716297668630741}
   m_Layer: 0
   m_Name: BoostPad
   m_TagString: Boost
@@ -113,3 +114,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boostPad: {fileID: 1590323937260343516, guid: 1a2734c5312359c4593d2715e6347e60,
     type: 3}
+--- !u!114 &4119716297668630741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66574162644784861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d020017fbbec7044b1955fb6799ec0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: 0

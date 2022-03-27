@@ -2298,6 +2298,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1181716746 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7734978985859630176, guid: abca7bbc48820bb4a802a50d64f74705,
+    type: 3}
+  m_PrefabInstance: {fileID: 1181716741}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1527676184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2414,7 +2426,7 @@ PrefabInstance:
         type: 3}
       propertyPath: startButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1181716746}
     - target: {fileID: 1478793116343536573, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: switchBarLeft
