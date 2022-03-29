@@ -55,6 +55,7 @@ public class Player2Controler : Destructible
    // public float healPower = 20f;
 
     //Status
+    public bool shrink = false;
     public bool balloon = false;
     public float balloonTimer = 0.0f;
     public bool frozen = false;
@@ -139,6 +140,32 @@ public class Player2Controler : Destructible
 
         if (balloon == true)
             ballooning();
+        if (shrink == true) 
+            shrinking();
+    }
+    
+    //shrinking
+    private void shrinking()
+    {
+        if (balloonTimer <= 2.25f)
+        {
+            if (rb2d.transform.localScale.x > .5f)
+            {
+                rb2d.transform.localScale -= new Vector3(0.02f, 0.02f, 0.0f);
+            }
+            else
+                balloonTimer += Time.deltaTime;
+        }
+        else
+        {
+            rb2d.transform.localScale += new Vector3(0.02f, 0.02f, 0.0f);
+        }
+
+        if (rb2d.transform.localScale.x == 1)
+        {
+            balloonTimer = 0.0f;
+            shrink = false;
+        }
     }
 
     private void ballooning()
@@ -253,6 +280,17 @@ public class Player2Controler : Destructible
             Instantiate(col.GetComponent<boostPadHolder>().boostPad, GameObject.Find("Player").GetComponent<Transform>().position, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));           
 
             
+            powerUpSpawn.spawnedPowerUps -= 1;
+
+            powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);
+            Destroy(col.gameObject);
+        }
+
+        else if (col.gameObject.name.Equals("shrink(clone)"))
+        {
+            shrink = true; 
+            //GetComponent<AudioSource>().Play();
+
             powerUpSpawn.spawnedPowerUps -= 1;
 
             powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);
