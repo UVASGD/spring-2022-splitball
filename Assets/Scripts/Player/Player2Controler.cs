@@ -61,6 +61,7 @@ public class Player2Controler : Destructible
     public float freezeTimer = 0.0f;
     public bool reverse = false;
     public float reverseTimer = 0.0f;
+    Color origin;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +69,8 @@ public class Player2Controler : Destructible
         stats = GetComponent<PlayerData>();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        origin = GameObject.Find("Player2").GetComponent<SpriteRenderer>().color;
 
         //  RecallActive = false;
     }
@@ -108,9 +111,11 @@ public class Player2Controler : Destructible
                 rb2d.AddForce(movement * movePower);
             else
             {
+                GameObject.Find("Player2").GetComponent<SpriteRenderer>().color = Color.yellow;
                 reverseTimer += Time.deltaTime;
                 if (reverseTimer >= 2.0f)
                 {
+                    GameObject.Find("Player2").GetComponent<SpriteRenderer>().color = origin;
                     reverse = false;
                     reverseTimer = 0.0f;
                 }
@@ -118,9 +123,11 @@ public class Player2Controler : Destructible
             }
         else
         {
+            GameObject.Find("Player2").GetComponent<SpriteRenderer>().color = Color.cyan;
             freezeTimer += Time.deltaTime;
-            if (freezeTimer >= .9f)
+            if (freezeTimer >= .8f)
             {
+                GameObject.Find("Player2").GetComponent<SpriteRenderer>().color = origin;
                 frozen = false;
                 freezeTimer = 0.0f;
             }
@@ -145,7 +152,7 @@ public class Player2Controler : Destructible
     {
         if (balloonTimer <= 2.25f)
         {
-            if (rb2d.transform.localScale.x < 1.75f)
+            if (rb2d.transform.localScale.x < 1.8f)
             {
                 rb2d.transform.localScale += new Vector3(0.02f, 0.02f, 0.0f);
             }

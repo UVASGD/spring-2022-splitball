@@ -61,6 +61,7 @@ public class PlayerController : Destructible
     public float freezeTimer = 0.0f;
     public bool reverse = false; 
     public float reverseTimer = 0.0f;
+    Color origin;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +70,7 @@ public class PlayerController : Destructible
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
+        origin = GameObject.Find("Player").GetComponent<SpriteRenderer>().color;
         //     RecallActive = false;
     }
 
@@ -111,9 +113,12 @@ public class PlayerController : Destructible
                 rb2d.AddForce(movement * movePower);
             else
             {
+                GameObject.Find("Player").GetComponent<SpriteRenderer>().color = Color.yellow;
+
                 reverseTimer += Time.deltaTime;
                 if (reverseTimer >= 2.0f)
                 {
+                    GameObject.Find("Player").GetComponent<SpriteRenderer>().color = origin;
                     reverse = false;
                     reverseTimer = 0.0f;
                 }
@@ -121,10 +126,12 @@ public class PlayerController : Destructible
             }
         else
          {
-           freezeTimer += Time.deltaTime;
-          if (freezeTimer >= .9f)
+            GameObject.Find("Player").GetComponent<SpriteRenderer>().color = Color.cyan;
+            freezeTimer += Time.deltaTime;
+          if (freezeTimer >= .8f)
            {
-               frozen = false;
+                GameObject.Find("Player").GetComponent<SpriteRenderer>().color = origin;
+                frozen = false;
                 freezeTimer = 0.0f;
              }    
           }
@@ -138,16 +145,18 @@ public class PlayerController : Destructible
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         animator.SetFloat("Angle", angle);
         animator.SetFloat("VelMag", rb2d.velocity.magnitude);
-        
+
         if (balloon == true)
+        {
             ballooning();
+        }
     }
 
     private void ballooning()
     {
         if (balloonTimer <= 2.25f)
         {
-            if (rb2d.transform.localScale.x < 1.75f)
+            if (rb2d.transform.localScale.x < 1.8f)
             {
                 rb2d.transform.localScale += new Vector3(0.02f, 0.02f, 0.0f);
             }
