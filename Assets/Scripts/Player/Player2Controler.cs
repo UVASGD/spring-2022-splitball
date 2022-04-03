@@ -21,7 +21,7 @@ public class Player2Controler : Destructible
     public Animator animator;
 
     //sounds
-    public AudioClip[] clips = new AudioClip[6]; //0: dash, 1: hit wall/ball, 2: take damage, 3: dying, 4: power up (I actually also put this in an audio source lol), 5: heal ()
+    public AudioClip[] clips = new AudioClip[7]; //0: dash, 1: hit wall/ball, 2: take damage, 3: dying, 4: power up (I actually also put this in an audio source lol), 5: heal ()
 
     //im sorta copying this from last year's project im 90% sure some of it is not necessary
     Rigidbody2D rb2d;
@@ -198,7 +198,7 @@ public class Player2Controler : Destructible
         if (col.gameObject.name == "Boost(Clone)")
         {
             stats.dashes += 1;
-            //GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().Play();
 
             powerUpSpawn.spawnedPowerUps -= 1;
             
@@ -209,7 +209,7 @@ public class Player2Controler : Destructible
 
         else if (col.gameObject.name == "Shoot(Clone)")
         {
-            //GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().Play();
 
             powerUpSpawn.spawnedPowerUps -= 1;
             col.gameObject.GetComponent<ShootPowerUp>().Fire(1);
@@ -223,7 +223,7 @@ public class Player2Controler : Destructible
         {
             GameObject.Find("Player").GetComponent<PlayerController>().frozen = true;
             GameObject.Find("Player").GetComponent<PlayerController>().freezeTimer = 0.0f;
-            //   GetComponent<AudioSource>().Play();
+            AudioSource.PlayClipAtPoint(clips[6], transform.position);
 
             powerUpSpawn.spawnedPowerUps -= 1;
             
@@ -235,7 +235,7 @@ public class Player2Controler : Destructible
         {
             GameObject.Find("Player").GetComponent<PlayerController>().reverse = true;
             GameObject.Find("Player").GetComponent<PlayerController>().reverseTimer = 0.0f;
-            //  GetComponent<AudioSource>().Play();
+            AudioSource.PlayClipAtPoint(clips[6], transform.position);
 
             powerUpSpawn.spawnedPowerUps -= 1;
            
@@ -245,7 +245,7 @@ public class Player2Controler : Destructible
 
         else if (col.gameObject.name.Equals("Balloon(Clone)"))
         {
-            //GetComponent<AudioSource>().Play();
+            AudioSource.PlayClipAtPoint(clips[6], transform.position); 
             GameObject.Find("Player").GetComponent<PlayerController>().balloon = true;
 
             powerUpSpawn.spawnedPowerUps -= 1;
@@ -256,10 +256,10 @@ public class Player2Controler : Destructible
 
         else if (col.gameObject.name.Equals("BoostPad(Clone)"))
         {
-            //GetComponent<AudioSource>().Play();
-            Instantiate(col.GetComponent<boostPadHolder>().boostPad, GameObject.Find("Player").GetComponent<Transform>().position, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));           
 
-            
+            Instantiate(col.GetComponent<boostPadHolder>().boostPad, GameObject.Find("Player").GetComponent<Transform>().position, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));
+            AudioSource.PlayClipAtPoint(clips[6], transform.position);
+
             powerUpSpawn.spawnedPowerUps -= 1;
 
             powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);

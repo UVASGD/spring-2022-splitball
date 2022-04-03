@@ -41,6 +41,6 @@ public class LineDrawer : MonoBehaviour
 
         line.GetPositions(myPointsInLine);
 
-        return Vector3.Distance(myPointsInLine[1], myPointsInLine[2]);
+        return Vector3.Distance(myPointsInLine[1], myPointsInLine[0]);
     }
 }

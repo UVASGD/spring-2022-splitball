@@ -190,6 +190,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &24997209 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1478793117193559095, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1232749712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &118202812 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7734978984085842234, guid: abca7bbc48820bb4a802a50d64f74705,
@@ -482,7 +488,7 @@ PrefabInstance:
     - target: {fileID: 7485426692456981026, guid: 4bfde09625e481e43ad7eb841ce5e3e6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2
+      value: -2000
       objectReference: {fileID: 0}
     - target: {fileID: 7485426692456981026, guid: 4bfde09625e481e43ad7eb841ce5e3e6,
         type: 3}
@@ -517,6 +523,36 @@ PrefabInstance:
     - target: {fileID: 7485426692456981026, guid: 4bfde09625e481e43ad7eb841ce5e3e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485426692456981029, guid: 4bfde09625e481e43ad7eb841ce5e3e6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485426692456981029, guid: 4bfde09625e481e43ad7eb841ce5e3e6,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485426692456981029, guid: 4bfde09625e481e43ad7eb841ce5e3e6,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485426692456981029, guid: 4bfde09625e481e43ad7eb841ce5e3e6,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485426692456981029, guid: 4bfde09625e481e43ad7eb841ce5e3e6,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1109010485
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485426692456981029, guid: 4bfde09625e481e43ad7eb841ce5e3e6,
+        type: 3}
+      propertyPath: m_DynamicOccludee
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7485426692456981029, guid: 4bfde09625e481e43ad7eb841ce5e3e6,
@@ -3599,6 +3635,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7734978985807440969, guid: abca7bbc48820bb4a802a50d64f74705,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 24997209}
+    - target: {fileID: 7734978985807440969, guid: abca7bbc48820bb4a802a50d64f74705,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7734978985807440969, guid: abca7bbc48820bb4a802a50d64f74705,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 46485277
       objectReference: {fileID: 0}
     - target: {fileID: 7734978985807440970, guid: abca7bbc48820bb4a802a50d64f74705,
         type: 3}
