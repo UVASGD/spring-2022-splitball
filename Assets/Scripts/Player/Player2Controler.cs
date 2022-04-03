@@ -56,6 +56,8 @@ public class Player2Controler : Destructible
 
     //Status
     public bool shrink = false;
+    public float shrinkTimer;
+
     public bool balloon = false;
     public float balloonTimer = 0.0f;
     public bool frozen = false;
@@ -147,14 +149,14 @@ public class Player2Controler : Destructible
     //shrinking
     private void shrinking()
     {
-        if (balloonTimer <= 2.25f)
+        if (shrinkTimer <= 2.25f)
         {
             if (rb2d.transform.localScale.x > .5f)
             {
                 rb2d.transform.localScale -= new Vector3(0.02f, 0.02f, 0.0f);
             }
             else
-                balloonTimer += Time.deltaTime;
+                shrinkTimer += Time.deltaTime;
         }
         else
         {
@@ -163,7 +165,7 @@ public class Player2Controler : Destructible
 
         if (rb2d.transform.localScale.x == 1)
         {
-            balloonTimer = 0.0f;
+            shrinkTimer = 0.0f;
             shrink = false;
         }
     }

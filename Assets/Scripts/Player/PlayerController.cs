@@ -56,12 +56,14 @@ public class PlayerController : Destructible
 
     //Status
     public bool shrink = false;
+    public float shrinkTimer;
     public bool balloon = false;
     public float balloonTimer = 0.0f;
     public bool frozen = false;
     public float freezeTimer = 0.0f;
     public bool reverse = false; 
     public float reverseTimer = 0.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -148,14 +150,14 @@ public class PlayerController : Destructible
     //shrinking change balloon timers to 
     private void shrinking()
     {
-        if (balloonTimer <= 2.25f)
+        if (shrinkTimer <= 2.25f)
         {
             if (rb2d.transform.localScale.x > .5f)
             {
                 rb2d.transform.localScale -= new Vector3(0.02f, 0.02f, 0.0f);
             }
             else
-                balloonTimer += Time.deltaTime;
+                shrinkTimer += Time.deltaTime;
         }
         else
         {
@@ -164,7 +166,7 @@ public class PlayerController : Destructible
 
         if (rb2d.transform.localScale.x == 1)
         {
-            balloonTimer = 0.0f;
+            shrinkTimer = 0.0f;
             shrink = false;
         }
     }
