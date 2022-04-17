@@ -3304,6 +3304,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5806017286969273995, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f1f7e03eafd3b764c8b98c752ea7141c, type: 3}
     - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: target
@@ -3566,6 +3571,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 421610935, guid: abca7bbc48820bb4a802a50d64f74705, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2153.197
+      objectReference: {fileID: 0}
     - target: {fileID: 7734978984054659749, guid: abca7bbc48820bb4a802a50d64f74705,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -3641,16 +3650,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 24997209}
-    - target: {fileID: 7734978985807440969, guid: abca7bbc48820bb4a802a50d64f74705,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7734978985807440969, guid: abca7bbc48820bb4a802a50d64f74705,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 46485277
-      objectReference: {fileID: 0}
     - target: {fileID: 7734978985807440970, guid: abca7bbc48820bb4a802a50d64f74705,
         type: 3}
       propertyPath: m_Name
