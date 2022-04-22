@@ -57,7 +57,6 @@ public class Player2Controler : Destructible
     //Status
     public bool shrink = false;
     public float shrinkTimer;
-
     public bool balloon = false;
     public float balloonTimer = 0.0f;
     public bool frozen = false;
@@ -153,7 +152,6 @@ public class Player2Controler : Destructible
             shrinking();
     }
     
-    //shrinking
     private void shrinking()
     {
         if (shrinkTimer <= 2.25f)
@@ -223,12 +221,16 @@ public class Player2Controler : Destructible
     //where to add power up code
     private void checkPowerUp(Collider2D col)
     {
-        //adds to dahses 
+        //adds to dashes 
         if (col.gameObject.name == "Boost(Clone)")
         {
             stats.dashes += 1;
+<<<<<<< Updated upstream
             GetComponent<AudioSource>().Play();
 
+=======
+            //GetComponent<AudioSource>().Play();
+>>>>>>> Stashed changes
             powerUpSpawn.spawnedPowerUps -= 1;
             
             powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);
@@ -295,7 +297,7 @@ public class Player2Controler : Destructible
             Destroy(col.gameObject);
         }
 
-        else if (col.gameObject.name.Equals("shrink(clone)"))
+        else if (col.gameObject.name.Equals("shrink(Clone)"))
         {
             shrink = true; 
             //GetComponent<AudioSource>().Play();

@@ -55,6 +55,8 @@ public class PlayerController : Destructible
    // public float healPower = 20f;
 
     //Status
+    public GameObject textbox;
+    public float textTimer = 0.0f;
     public bool shrink = false;
     public float shrinkTimer;
     public bool balloon = false;
@@ -72,8 +74,12 @@ public class PlayerController : Destructible
         stats = GetComponent<PlayerData>();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+<<<<<<< Updated upstream
 
         origin = GameObject.Find("Player").GetComponent<SpriteRenderer>().color;
+=======
+        textbox.GetComponent<MeshRenderer>().enabled = false;
+>>>>>>> Stashed changes
         //     RecallActive = false;
     }
 
@@ -81,9 +87,7 @@ public class PlayerController : Destructible
     void Update()
     {
         if (gm.isActive) {
-
-
-         
+                     
                 movement = new Vector2(Input.GetAxis("Horizontal1"), Input.GetAxis("Vertical1"));
                
             fire = Input.GetKey("q");
@@ -101,6 +105,10 @@ public class PlayerController : Destructible
         
         //NOTE FOR FUTURE DEVELOPING:
         //to make a "dash" use rb2d.AddForce(new Vector2(speed,speed), ForceMode2D.Impulse)
+        if (textTimer >= 3f)
+            textbox.GetComponent<MeshRenderer>().enabled = false;                
+        else
+            textTimer += Time.deltaTime;
 
         if(fire && lastDash >= dashCD && stats.dashes != 0){
             StartCoroutine(Deccelerate());
@@ -156,7 +164,6 @@ public class PlayerController : Destructible
         if (shrink == true)
             shrinking();
     }
-    //shrinking change balloon timers to 
     private void shrinking()
     {
         if (shrinkTimer <= 2.25f)
@@ -203,7 +210,8 @@ public class PlayerController : Destructible
             balloonTimer = 0.0f;
             balloon = false;
         }
-    }
+    
+    }    
 
     private void OnTriggerEnter2D(Collider2D collision) {
 
@@ -211,6 +219,7 @@ public class PlayerController : Destructible
         if(collision.gameObject.tag == "Boost")
         {
             checkPowerUp(collision);
+            
         }
         /*
         if (collision.gameObject.tag == "Recall" ) {
@@ -230,11 +239,14 @@ public class PlayerController : Destructible
         if (col.gameObject.name == "Boost(Clone)")
         {
             stats.dashes += 1;
+<<<<<<< Updated upstream
             GetComponent<AudioSource>().Play();
 
+=======
+            //GetComponent<AudioSource>().Play();
+            textbox.GetComponent<MeshRenderer>().enabled = true;
+>>>>>>> Stashed changes
             powerUpSpawn.spawnedPowerUps -= 1;
-
-
             powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);
             Destroy(col.gameObject);
         }
