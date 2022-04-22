@@ -150,15 +150,19 @@ public class GameManager : MonoBehaviour
         
     if (PlayerData.player1score >= 5 && PlayerData.player1score != PlayerData.player2score)
         {
-            //TODO take to victory scene
-            Debug.Log("p1 won");
+            PlayerData.player2score = 0;
+            PlayerData.player1score = 0;
+            PlayerData.player1wins += 1;
+            SceneManager.LoadScene("Victory");
         }
 
     if (PlayerData.player2score >= 5 && PlayerData.player1score != PlayerData.player2score)
     {
-            //TODO take to victory scene
-            Debug.Log("p2 won");    
-    }
+            PlayerData.player1score = 0;
+            PlayerData.player2score = 0;
+            PlayerData.player2wins += 1;
+            SceneManager.LoadScene("Defeat");
+        }
     }
 
 

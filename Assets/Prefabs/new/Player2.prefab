@@ -284,9 +284,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c6398df0cc70b7246a2fa9e46ce50d68, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 42227b873e704c948b55b7a2f4f289d9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -394,8 +394,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b678a2db24a5591469d407d123793669, type: 3}
   - {fileID: 8300000, guid: b79dc8aca251eff40815f666bfea698e, type: 3}
   - {fileID: 8300000, guid: eb2a40150ffde8e42b711f874145824d, type: 3}
-  - {fileID: 8300000, guid: c6398df0cc70b7246a2fa9e46ce50d68, type: 3}
+  - {fileID: 8300000, guid: 42227b873e704c948b55b7a2f4f289d9, type: 3}
   - {fileID: 8300000, guid: d384f2eae82f8bb4c89e68293547457b, type: 3}
+  - {fileID: 8300000, guid: 67770eb2b9d7d534ca18d77cf9e0f211, type: 3}
   currentMaxSpeed: 10
   maxMoveSpeed: 10
   maxDashSpeed: 20
@@ -406,14 +407,16 @@ MonoBehaviour:
   neutral: {fileID: 0}
   dash: {fileID: 0}
   pos: {fileID: 0}
-  iFrameCounter: 0
-  iFrameDuration: 0
   RecallActive: 0
   ballEntered1: 0
   ballEntered2: 0
   timeToDie: 0
-  healPower: 20
   balloon: 0
+  balloonTimer: 0
+  frozen: 0
+  freezeTimer: 0
+  reverse: 0
+  reverseTimer: 0
 --- !u!114 &3196339885568989300
 MonoBehaviour:
   m_ObjectHideFlags: 0

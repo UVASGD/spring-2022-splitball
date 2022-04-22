@@ -47,6 +47,10 @@ public class CameraFollow : MonoBehaviour
         float clampedX = Mathf.Clamp(transform.position.x, minbounds.x+halfWidth, maxbounds.x - halfWidth);
         float clampedy = Mathf.Clamp(transform.position.y, minbounds.y+halfHeight, maxbounds.y - halfHeight);
         transform.position = new Vector3(clampedX, clampedy, transform.position.z);
+
+        if (GameObject.Find("Line").GetComponent<LineDrawer>().getDistance() >= theCamera.orthographicSize * 1.5f)
+        { //here
+          }
     }
 
     public void SetBounds(BoxCollider2D newBounds){
