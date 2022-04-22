@@ -21,7 +21,7 @@ public class Player2Controler : Destructible
     public Animator animator;
 
     //sounds
-    public AudioClip[] clips = new AudioClip[6]; //0: dash, 1: hit wall/ball, 2: take damage, 3: dying, 4: power up (I actually also put this in an audio source lol), 5: heal ()
+    public AudioClip[] clips = new AudioClip[7]; //0: dash, 1: hit wall/ball, 2: take damage, 3: dying, 4: power up (I actually also put this in an audio source lol), 5: heal ()
 
     //im sorta copying this from last year's project im 90% sure some of it is not necessary
     Rigidbody2D rb2d;
@@ -61,6 +61,7 @@ public class Player2Controler : Destructible
     public float freezeTimer = 0.0f;
     public bool reverse = false;
     public float reverseTimer = 0.0f;
+    Color origin;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +69,8 @@ public class Player2Controler : Destructible
         stats = GetComponent<PlayerData>();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        origin = GameObject.Find("Player2").GetComponent<SpriteRenderer>().color;
 
         //  RecallActive = false;
     }
@@ -108,9 +111,11 @@ public class Player2Controler : Destructible
                 rb2d.AddForce(movement * movePower);
             else
             {
+                GameObject.Find("Player2").GetComponent<SpriteRenderer>().color = Color.yellow;
                 reverseTimer += Time.deltaTime;
                 if (reverseTimer >= 2.0f)
                 {
+                    GameObject.Find("Player2").GetComponent<SpriteRenderer>().color = origin;
                     reverse = false;
                     reverseTimer = 0.0f;
                 }
@@ -118,9 +123,11 @@ public class Player2Controler : Destructible
             }
         else
         {
+            GameObject.Find("Player2").GetComponent<SpriteRenderer>().color = Color.cyan;
             freezeTimer += Time.deltaTime;
-            if (freezeTimer >= .9f)
+            if (freezeTimer >= .8f)
             {
+                GameObject.Find("Player2").GetComponent<SpriteRenderer>().color = origin;
                 frozen = false;
                 freezeTimer = 0.0f;
             }
@@ -145,7 +152,7 @@ public class Player2Controler : Destructible
     {
         if (balloonTimer <= 2.25f)
         {
-            if (rb2d.transform.localScale.x < 1.75f)
+            if (rb2d.transform.localScale.x < 1.8f)
             {
                 rb2d.transform.localScale += new Vector3(0.02f, 0.02f, 0.0f);
             }
@@ -191,7 +198,7 @@ public class Player2Controler : Destructible
         if (col.gameObject.name == "Boost(Clone)")
         {
             stats.dashes += 1;
-            //GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().Play();
 
             powerUpSpawn.spawnedPowerUps -= 1;
             
@@ -202,7 +209,7 @@ public class Player2Controler : Destructible
 
         else if (col.gameObject.name == "Shoot(Clone)")
         {
-            //GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().Play();
 
             powerUpSpawn.spawnedPowerUps -= 1;
             col.gameObject.GetComponent<ShootPowerUp>().Fire(1);
@@ -216,7 +223,7 @@ public class Player2Controler : Destructible
         {
             GameObject.Find("Player").GetComponent<PlayerController>().frozen = true;
             GameObject.Find("Player").GetComponent<PlayerController>().freezeTimer = 0.0f;
-            //   GetComponent<AudioSource>().Play();
+            AudioSource.PlayClipAtPoint(clips[6], transform.position);
 
             powerUpSpawn.spawnedPowerUps -= 1;
             
@@ -228,7 +235,7 @@ public class Player2Controler : Destructible
         {
             GameObject.Find("Player").GetComponent<PlayerController>().reverse = true;
             GameObject.Find("Player").GetComponent<PlayerController>().reverseTimer = 0.0f;
-            //  GetComponent<AudioSource>().Play();
+            AudioSource.PlayClipAtPoint(clips[6], transform.position);
 
             powerUpSpawn.spawnedPowerUps -= 1;
            
@@ -238,7 +245,7 @@ public class Player2Controler : Destructible
 
         else if (col.gameObject.name.Equals("Balloon(Clone)"))
         {
-            //GetComponent<AudioSource>().Play();
+            AudioSource.PlayClipAtPoint(clips[6], transform.position); 
             GameObject.Find("Player").GetComponent<PlayerController>().balloon = true;
 
             powerUpSpawn.spawnedPowerUps -= 1;
@@ -249,10 +256,10 @@ public class Player2Controler : Destructible
 
         else if (col.gameObject.name.Equals("BoostPad(Clone)"))
         {
-            //GetComponent<AudioSource>().Play();
-            Instantiate(col.GetComponent<boostPadHolder>().boostPad, GameObject.Find("Player").GetComponent<Transform>().position, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));           
 
-            
+            Instantiate(col.GetComponent<boostPadHolder>().boostPad, GameObject.Find("Player").GetComponent<Transform>().position, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));
+            AudioSource.PlayClipAtPoint(clips[6], transform.position);
+
             powerUpSpawn.spawnedPowerUps -= 1;
 
             powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);

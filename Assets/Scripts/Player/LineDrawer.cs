@@ -32,4 +32,15 @@ public class LineDrawer : MonoBehaviour
             // transform.position.y = gameObject1.position.y + (gameObject2.position.y - gameObject1.position.y) / 2;
         }
     }
+
+    public float getDistance()
+    {
+       
+       Vector3[] myPointsInLine;
+        myPointsInLine = new Vector3[2];
+
+        line.GetPositions(myPointsInLine);
+
+        return Vector3.Distance(myPointsInLine[1], myPointsInLine[0]);
+    }
 }
