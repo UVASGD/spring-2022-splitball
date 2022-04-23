@@ -3680,7 +3680,7 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Wall Battle:
 
-        Vortex'
+        Shooty'
       objectReference: {fileID: 0}
     - target: {fileID: 7734978984054659749, guid: abca7bbc48820bb4a802a50d64f74705,
         type: 3}
