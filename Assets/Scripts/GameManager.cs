@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
             
             startButton.gameObject.GetComponent<Button>();
             startButton.onClick.AddListener(StartGame);
-            /*
+            
             exitButton.gameObject.GetComponent<Button>();
             exitButton.onClick.AddListener(ExitGame);
 
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
 
             backButton.gameObject.GetComponent<Button>();
             backButton.onClick.AddListener(back);
-            */
+            
             switchBarLeft.gameObject.GetComponent<Slider>();
             switchBarRight.gameObject.GetComponent<Slider>();
             dashBar1.gameObject.GetComponent<Slider>();
@@ -181,9 +181,13 @@ public class GameManager : MonoBehaviour
         }
         catch {}
         Scene scene = SceneManager.GetActiveScene();
+
+
+
         if (scene.name == "StartMenu") {
             //TODO this needs to load random game
-		    SceneManager.LoadScene("Level0");
+            int levelGen = UnityEngine.Random.Range(3, 6);
+            SceneManager.LoadScene(levelGen);
         }
         if (scene.name == "Victory" || scene.name == "Defeat") {
 		    SceneManager.LoadScene("StartMenu");
