@@ -61,6 +61,7 @@ public class Player2Controler : Destructible
     public float freezeTimer = 0.0f;
     public bool reverse = false;
     public float reverseTimer = 0.0f;
+    public bool stationary = false;
     Color origin;
 
     // Start is called before the first frame update
@@ -325,12 +326,14 @@ public class Player2Controler : Destructible
     }
 
     IEnumerator StartDying(){
-        yield return new WaitForSeconds(timeToDie);
         gm.isActive = false;
+        yield return new WaitForSeconds(timeToDie);
+        //gm.isActive = false;
         //scenes have to be added to build path in the file->build->add scene path and level range should be changed
         //should be one higher than last build number of levels
-        int levelGen = UnityEngine.Random.Range(3, 8);
+        int levelGen = UnityEngine.Random.Range(3, 9);
         SceneManager.LoadScene(levelGen);
+        gm.checkWin();
         //    SceneManager.LoadScene("Defeat");
     }
     /*
