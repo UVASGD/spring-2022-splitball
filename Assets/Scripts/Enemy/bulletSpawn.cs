@@ -45,7 +45,7 @@ public GameManager gm;
     animator.SetFloat("TimeLeft", shootTimer - lastFire);
     //fire if timer higher than shot clock
     if (lastFire >= shootTimer){
-      int temp = (int)(lastFire * 1000) % 2;
+      int temp = UnityEngine.Random.Range(0, 2);
       if(temp == 0){
         target = gm.player.GetComponent<Transform>();
       }

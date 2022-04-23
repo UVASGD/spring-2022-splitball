@@ -333,7 +333,7 @@ public class PlayerController : Destructible
         //        SceneManager.LoadScene("Defeat");
         //scenes have to be added to build path in the file->build->add scene path and level range should be changed
         //should be one higher than last build number of levels
-        int levelGen = UnityEngine.Random.Range(3, 7);
+        int levelGen = UnityEngine.Random.Range(3, 8);
                 SceneManager.LoadScene(levelGen);
     }
     /*
