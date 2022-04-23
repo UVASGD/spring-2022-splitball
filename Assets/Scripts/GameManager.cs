@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
             
             startButton.gameObject.GetComponent<Button>();
             startButton.onClick.AddListener(StartGame);
-            /*
+            
             exitButton.gameObject.GetComponent<Button>();
             exitButton.onClick.AddListener(ExitGame);
 
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
 
             backButton.gameObject.GetComponent<Button>();
             backButton.onClick.AddListener(back);
-            */
+            
             switchBarLeft.gameObject.GetComponent<Slider>();
             switchBarRight.gameObject.GetComponent<Slider>();
             dashBar1.gameObject.GetComponent<Slider>();
