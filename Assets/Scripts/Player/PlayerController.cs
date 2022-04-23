@@ -328,14 +328,17 @@ public class PlayerController : Destructible
     }
 
     IEnumerator StartDying(){
-        yield return new WaitForSeconds(timeToDie);
         gm.isActive = false;
+        yield return new WaitForSeconds(timeToDie);
+        //gm.isActive = false;
         //        SceneManager.LoadScene("Defeat");
         //scenes have to be added to build path in the file->build->add scene path and level range should be changed
         //should be one higher than last build number of levels
-        int levelGen = UnityEngine.Random.Range(3, 8);
-                SceneManager.LoadScene(levelGen);
+        int levelGen = UnityEngine.Random.Range(3, 9);
+        SceneManager.LoadScene(levelGen);
+        gm.checkWin();
     }
+        
     /*
     IEnumerator Flash(float x) {
     while(iFrameCounter < iFrameDuration) {

@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arenas/Shooty.unity
     guid: 819de8f63f207f842bb0dd7fbb0894e7
+  - enabled: 1
+    path: Assets/Scenes/Arenas/cubicle.unity
+    guid: 7e1542e8dd115274eaac951231dde6b3
   m_configObjects: {}
