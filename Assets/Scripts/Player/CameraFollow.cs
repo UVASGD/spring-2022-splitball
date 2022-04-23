@@ -55,9 +55,9 @@ public class CameraFollow : MonoBehaviour
             
                 theCamera.orthographicSize = 10;
                             
-            else
-                GameObject.Find("BackgroundSpace").GetComponent<Transform>().localScale -= new Vector3(0.001f, 0.001f);
-
+           // else
+            //    GameObject.Find("BackgroundSpace").GetComponent<Transform>().localScale -= new Vector3(0.001f, 0.001f);
+            
         }
         else if (GameObject.Find("Line").GetComponent<LineDrawer>().getDistance() >= theCamera.orthographicSize * 1.4f)
         {
@@ -67,9 +67,9 @@ public class CameraFollow : MonoBehaviour
             
                 theCamera.orthographicSize = 25;
                            
-            else
+  //          else
             
-                 GameObject.Find("BackgroundSpace").GetComponent<Transform>().localScale += new Vector3(0.001f, 0.001f, 0);
+//                 GameObject.Find("BackgroundSpace").GetComponent<Transform>().localScale += new Vector3(0.001f, 0.001f, 0);
 
             
         }
