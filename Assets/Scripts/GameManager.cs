@@ -101,7 +101,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       if(!isActive){
+           if(Input.GetKey("space")){
+               StartGame();
+           }
+       }
         //checks condition to win, should be different for each kind of game
         //TODO allow player to fizzle out and die before switching to next scene, play animation adding to score
         if (isActive)
