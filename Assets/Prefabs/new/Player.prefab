@@ -234,12 +234,16 @@ MonoBehaviour:
   ballEntered1: 0
   ballEntered2: 0
   timeToDie: 1.37
+  textfield: {fileID: 0}
+  textTimer: 0
   balloon: 0
   balloonTimer: 0
   frozen: 0
   freezeTimer: 0
   reverse: 0
   reverseTimer: 0
+  shrink: 0
+  shrinkTimer: 0
 --- !u!58 &7903341050043387172
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -429,6 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8b0841f79e7a449961937f4d74cb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
 --- !u!114 &2442378410308835459
 MonoBehaviour:
   m_ObjectHideFlags: 0
