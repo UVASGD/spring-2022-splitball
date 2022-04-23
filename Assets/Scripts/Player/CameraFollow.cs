@@ -48,9 +48,32 @@ public class CameraFollow : MonoBehaviour
         float clampedy = Mathf.Clamp(transform.position.y, minbounds.y+halfHeight, maxbounds.y - halfHeight);
         transform.position = new Vector3(clampedX, clampedy, transform.position.z);
 
-        if (GameObject.Find("Line").GetComponent<LineDrawer>().getDistance() >= theCamera.orthographicSize * 1.5f)
-        { //here
-          }
+        if (GameObject.Find("Line").GetComponent<LineDrawer>().getDistance() <= theCamera.orthographicSize * 1.33f)
+        {
+            theCamera.orthographicSize = theCamera.orthographicSize - 2 * Time.deltaTime;
+            if (theCamera.orthographicSize <= 10)
+            
+                theCamera.orthographicSize = 10;
+                            
+           // else
+            //    GameObject.Find("BackgroundSpace").GetComponent<Transform>().localScale -= new Vector3(0.001f, 0.001f);
+            
+        }
+        else if (GameObject.Find("Line").GetComponent<LineDrawer>().getDistance() >= theCamera.orthographicSize * 1.4f)
+        {
+            theCamera.orthographicSize = theCamera.orthographicSize + 2*Time.deltaTime;
+           
+            if (theCamera.orthographicSize >= 25)
+            
+                theCamera.orthographicSize = 25;
+                           
+  //          else
+            
+//                 GameObject.Find("BackgroundSpace").GetComponent<Transform>().localScale += new Vector3(0.001f, 0.001f, 0);
+
+            
+        }
+
     }
 
     public void SetBounds(BoxCollider2D newBounds){
