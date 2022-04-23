@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arenas/cubicle.unity
     guid: 7e1542e8dd115274eaac951231dde6b3
+  - enabled: 1
+    path: Assets/Scenes/Arenas/Box On Box.unity
+    guid: 6b7268e29cd70ae448eeb08741bc7e8a
   m_configObjects: {}
