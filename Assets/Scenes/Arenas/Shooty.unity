@@ -225,12 +225,12 @@ PrefabInstance:
     - target: {fileID: 5259316374121391086, guid: aedaaaed76b1e37408a9949a33f0643f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.25
+      value: -20.5
       objectReference: {fileID: 0}
     - target: {fileID: 5259316374121391086, guid: aedaaaed76b1e37408a9949a33f0643f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.25
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: 5259316374149424176, guid: aedaaaed76b1e37408a9949a33f0643f,
         type: 3}
@@ -333,12 +333,12 @@ PrefabInstance:
     - target: {fileID: 5259316374322326421, guid: aedaaaed76b1e37408a9949a33f0643f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14
+      value: -19.4
       objectReference: {fileID: 0}
     - target: {fileID: 5259316374322326421, guid: aedaaaed76b1e37408a9949a33f0643f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10
+      value: -23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedaaaed76b1e37408a9949a33f0643f, type: 3}
@@ -3265,7 +3265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556799971}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.75, y: -12.75, z: 0}
+  m_LocalPosition: {x: -20.1, y: -15.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 30527669}
@@ -3680,7 +3680,16 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Wall Battle:
 
-        Vortex'
+        Shooty'
+      objectReference: {fileID: 0}
+    - target: {fileID: 904305307, guid: abca7bbc48820bb4a802a50d64f74705, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a,
+        type: 2}
+    - target: {fileID: 904305307, guid: abca7bbc48820bb4a802a50d64f74705, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 7734978984054659749, guid: abca7bbc48820bb4a802a50d64f74705,
         type: 3}
