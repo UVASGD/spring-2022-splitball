@@ -3017,7 +3017,7 @@ PrefabInstance:
         type: 3}
       propertyPath: boundBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 390261131}
     - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: smoothingSpeed
