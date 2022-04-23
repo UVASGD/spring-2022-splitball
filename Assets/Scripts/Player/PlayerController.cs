@@ -55,12 +55,16 @@ public class PlayerController : Destructible
    // public float healPower = 20f;
 
     //Status
+    public GameObject textfield;
+    public float textTimer;
     public bool balloon = false;
     public float balloonTimer = 0.0f;
     public bool frozen = false;
     public float freezeTimer = 0.0f;
     public bool reverse = false; 
     public float reverseTimer = 0.0f;
+    public bool shrink = false;
+    public float shrinkTimer;
     Color origin;
 
     // Start is called before the first frame update
@@ -90,7 +94,12 @@ public class PlayerController : Destructible
             lastDash += Time.deltaTime;
         }
      //   iFrameCounter += Time.deltaTime;
-      
+        if (textTimer > 90){
+            textfield.SetActive(false);
+        }
+        else {
+            textTimer += 1;
+        }
 
     }
 
@@ -150,6 +159,30 @@ public class PlayerController : Destructible
         {
             ballooning();
         }
+        if (shrink == true) 
+            shrinking();
+    }
+    private void shrinking()
+    {
+        if (shrinkTimer <= 2.25f)
+        {
+            if (rb2d.transform.localScale.x > .5f)
+            {
+                rb2d.transform.localScale -= new Vector3(0.02f, 0.02f, 0.0f);
+            }
+            else
+                shrinkTimer += Time.deltaTime;
+        }
+        else
+        {
+            rb2d.transform.localScale += new Vector3(0.02f, 0.02f, 0.0f);
+        }
+
+        if (rb2d.transform.localScale.x == 1)
+        {
+            shrinkTimer = 0.0f;
+            shrink = false;
+        }
     }
 
     private void ballooning()
@@ -203,7 +236,8 @@ public class PlayerController : Destructible
             GetComponent<AudioSource>().Play();
 
             powerUpSpawn.spawnedPowerUps -= 1;
-
+            textfield.SetActive(true);
+            textTimer = 0;
 
             powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);
             Destroy(col.gameObject);
@@ -269,7 +303,16 @@ public class PlayerController : Destructible
             powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);
             Destroy(col.gameObject);
         }
+        else if (col.gameObject.name.Equals("Shrink(Clone)"))
+        {
+            shrink = true; 
+            GetComponent<AudioSource>().Play();
 
+            powerUpSpawn.spawnedPowerUps -= 1;
+            
+            powerUpSpawn.emptySpace(col.gameObject.GetComponent<posHolder>().spawnPoint);
+            Destroy(col.gameObject);
+        }
         /*
                 if (col.gameObject.name == "Heal")
                 {
