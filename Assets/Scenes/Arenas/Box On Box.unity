@@ -162,7 +162,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 74.91, y: 40}
+  m_Size: {x: 74.1, y: 40}
   m_EdgeRadius: 0
 --- !u!4 &6514462
 Transform:
@@ -335,12 +335,12 @@ PrefabInstance:
     - target: {fileID: 5259316374149424177, guid: aedaaaed76b1e37408a9949a33f0643f,
         type: 3}
       propertyPath: spawnChance
-      value: 85
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5259316374149424177, guid: aedaaaed76b1e37408a9949a33f0643f,
         type: 3}
       propertyPath: spawnChecker
-      value: 5.67
+      value: 7.77
       objectReference: {fileID: 0}
     - target: {fileID: 5259316374149424177, guid: aedaaaed76b1e37408a9949a33f0643f,
         type: 3}
@@ -368,7 +368,7 @@ PrefabInstance:
         type: 3}
       propertyPath: activators.Array.data[2]
       value: 
-      objectReference: {fileID: 503915402}
+      objectReference: {fileID: 566732928}
     - target: {fileID: 5259316374149424334, guid: aedaaaed76b1e37408a9949a33f0643f,
         type: 3}
       propertyPath: m_RootOrder
@@ -436,12 +436,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedaaaed76b1e37408a9949a33f0643f, type: 3}
---- !u!1 &503915402 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5259316374121391057, guid: aedaaaed76b1e37408a9949a33f0643f,
-    type: 3}
-  m_PrefabInstance: {fileID: 503915401}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &503915403 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5259316374149424334, guid: aedaaaed76b1e37408a9949a33f0643f,
@@ -3137,12 +3131,12 @@ PrefabInstance:
     - target: {fileID: 1341985059077510798, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2854103
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1341985059077510798, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.231572
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1341985059077510798, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
