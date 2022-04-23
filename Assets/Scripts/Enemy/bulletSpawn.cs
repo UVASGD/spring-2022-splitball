@@ -30,9 +30,9 @@ public GameManager gm;
    void Start()
     {
         //get components from objects
-        target = GameObject.Find("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        target = gm.player.GetComponent<Transform>();
     }
 
  void Update ()
@@ -45,6 +45,13 @@ public GameManager gm;
     animator.SetFloat("TimeLeft", shootTimer - lastFire);
     //fire if timer higher than shot clock
     if (lastFire >= shootTimer){
+      int temp = (int)(lastFire * 1000) % 2;
+      if(temp == 0){
+        target = gm.player.GetComponent<Transform>();
+      }
+      else{
+        target = gm.player2.GetComponent<Transform>();
+      }
       lastFire = 0;
       Shoot();
     }
