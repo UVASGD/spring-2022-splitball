@@ -230,6 +230,11 @@ PrefabInstance:
       objectReference: {fileID: 1418767407}
     - target: {fileID: 5806017286969273995, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806017286969273995, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 002b8346fb1dd3244a53622403a4a339, type: 3}
@@ -1519,14 +1524,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'P1 (left) Movement: WASD
 
-    P1 Dash: Q
-
-    P2 (right) Movement: IJKL
+    P1 Dash (start each round with 3): Q
 
     P2
-    Dash: U
+    (right) Movement: IJKL
 
-    Switch Velocity: Hold Space'
+    P2 Dash (start each round with 3): U
+
+    Switch
+    Velocity: Hold Space'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}

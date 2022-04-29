@@ -8,12 +8,6 @@ public class rotate : MonoBehaviour
     public GameObject rotateAround;
     public GameObject[] respawns;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
