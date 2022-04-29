@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
 
         if (scene.name == "StartMenu") {
             //TODO this needs to load random game
-            int levelGen = UnityEngine.Random.Range(3, 6);
+            int levelGen = UnityEngine.Random.Range(3, 14);
             SceneManager.LoadScene(levelGen);
         }
         if (scene.name == "Victory" || scene.name == "Defeat") {

@@ -376,7 +376,7 @@ public class Player2Controler : Destructible
         //gm.isActive = false;
         //scenes have to be added to build path in the file->build->add scene path and level range should be changed
         //should be one higher than last build number of levels
-        int levelGen = UnityEngine.Random.Range(3, 10);
+        int levelGen = UnityEngine.Random.Range(3, 14);
         SceneManager.LoadScene(levelGen);
         gm.checkWin();
         //    SceneManager.LoadScene("Defeat");

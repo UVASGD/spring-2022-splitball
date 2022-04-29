@@ -53,4 +53,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arenas/Chicken.unity
     guid: 149e9f404331e61498c7ea0f4bdacd04
+  - enabled: 1
+    path: Assets/Scenes/Arenas/Crusher.unity
+    guid: d221005e4b321bd4ca12fd7c136097b4
+  - enabled: 1
+    path: Assets/Scenes/Arenas/house.unity
+    guid: db26cc5b5d27a3342aedd7089afea785
+  - enabled: 1
+    path: Assets/Scenes/Arenas/hell.unity
+    guid: 1dbff99e26b57d0489e68701fadd99d2
+  - enabled: 1
+    path: Assets/Scenes/Arenas/hole.unity
+    guid: ed744bcabef35f34ebdf1bc24a10fcbc
   m_configObjects: {}

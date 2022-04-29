@@ -10,7 +10,7 @@ public class crush : MonoBehaviour
     public GameObject right;
 
     bool okToGo = true;
-    float toWait = 4;
+    float toWait = 3.3f;
     float count = 0;
     int whichOne;
 
@@ -19,181 +19,110 @@ public class crush : MonoBehaviour
     bool goUp;
     bool goDown;
 
-    bool returner;
-
+    public GameManager gm;
     float distance = 0;
-    Vector3 loc;
-    float xcord;
-    float ycord;
+    bool returner = false;
 
     // Update is called once per frame
     void Update()
     {
-        count += Time.deltaTime;
-        if (count >= toWait & okToGo == true)
+        if (gm.isActive)
         {
-            okToGo = false;
-            whichOne = Random.Range(0, 3);
-            if (whichOne == 0)
-            { 
-                goLeft = true;
-                xcord = left.GetComponent<Rigidbody2D>().position.x;
-                ycord = left.GetComponent<Rigidbody2D>().position.y;
-            }
-        if (whichOne == 1)
+            count += Time.deltaTime;
+            if (count >= toWait & okToGo == true)
             {
-                goDown = true;
-                xcord = bottom.GetComponent<Rigidbody2D>().position.x;
-                ycord = bottom.GetComponent<Rigidbody2D>().position.y;
+                okToGo = false;
+                whichOne = Random.Range(0, 3);
+                if (whichOne == 0)
+                    goLeft = true;
+                if (whichOne == 1)
+                    goDown = true;
+                if (whichOne == 2)
+                    goUp = true;
+                if (whichOne == 3)
+                    goRight = true;
             }
-        if (whichOne == 2)
-            { goUp = true;
-                xcord = top.GetComponent<Rigidbody2D>().position.x;
-                                ycord = top.GetComponent<Rigidbody2D>().position.y;
-            }
-        if (whichOne == 3)
+
+
+
+            if (goDown)
             {
-                goRight = true;
-                xcord = right.GetComponent<Rigidbody2D>().position.x;
-                ycord = right.GetComponent<Rigidbody2D>().position.y;
+                distance += Time.deltaTime;
+                bottom.transform.position = (new Vector3(bottom.transform.position.x, bottom.transform.position.y + (1 * Time.deltaTime), 0));
+
+                if (distance > 1.0f)
+                    returner = true;
+
             }
+            if (returner & goDown)
+            {
+                goDown = false;
+                returner = false;
+                distance = 0;
+                okToGo = true;
+                count = 0;
+            }
+
+
+
+
+            if (goUp)
+            {
+                distance += Time.deltaTime;
+                top.transform.position = (new Vector3(top.transform.position.x, top.transform.position.y - (1 * Time.deltaTime), 0));
+
+                if (distance > 1.0f)
+                    returner = true;
+            }
+            if (returner & goUp)
+            {
+                goUp = false;
+                returner = false;
+                distance = 0;
+                okToGo = true;
+                count = 0;
+            }
+
+
+
+
+            if (goLeft)
+            {
+                distance += Time.deltaTime;
+                left.transform.position = (new Vector3(left.transform.position.x + (1 * Time.deltaTime), left.transform.position.y, 0));
+
+                if (distance > 1.0f)
+                    returner = true;
+            }
+            if (returner & goLeft)
+            {
+                goLeft = false;
+                returner = false;
+                distance = 0;
+                okToGo = true;
+                count = 0;
+            }
+
+
+
+            if (goRight)
+            {
+                distance += Time.deltaTime;
+                right.transform.position = right.transform.position = (new Vector3(right.transform.position.x - (1 * Time.deltaTime), right.transform.position.y, 0));
+
+                if (distance > 1.0f)
+                    returner = true;
+            }
+            if (returner & goRight)
+            {
+                goRight = false;
+                returner = false;
+                distance = 0;
+                okToGo = true;
+                count = 0;
+            }
+
         }
-
-        if (distance > 2.2f)
-            returner = true;
-
-
-
-
-
-
-
-
-        if (goDown)
-            if (!returner)
-            {
-                distance += Vector3.Distance(loc, bottom.GetComponent<Rigidbody2D>().position);
-                loc = bottom.GetComponent<Rigidbody2D>().position;
-
-                bottom.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -10) * .1f);
-            }
-            else
-            {
-                {
-                    distance += Vector3.Distance(loc, bottom.GetComponent<Rigidbody2D>().position);
-                    loc = bottom.GetComponent<Rigidbody2D>().position;
-
-                    bottom.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 10) * .1f);
-                }
-            }
-
-        if(returner & bottom.GetComponent<Rigidbody2D>().transform.position.y >= ycord -.2f  & goDown)
-        {
-            goDown = false;
-            bottom.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-            bottom.GetComponent<Rigidbody2D>().transform.position = (new Vector2(xcord, ycord -.2f));
-            returner = false;
-            distance = 0;
-            okToGo = true;
-            count = 0;
-        }
-
-
-
-
-        if (goUp)
-            if (!returner)
-            {
-                distance += Vector3.Distance(loc, top.GetComponent<Rigidbody2D>().position);
-                loc = top.GetComponent<Rigidbody2D>().position;
-
-                top.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 10) * .1f);
-            }
-            else
-            {
-                {
-                    distance += Vector3.Distance(loc, top.GetComponent<Rigidbody2D>().position);
-                    loc = top.GetComponent<Rigidbody2D>().position;
-
-                    top.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -10) * .1f);
-                }
-            }
-
-        if (returner & top.GetComponent<Rigidbody2D>().transform.position.y >= ycord + .2f & goUp)
-        {
-            goUp = false;
-            top.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-            top.GetComponent<Rigidbody2D>().transform.position = (new Vector2(xcord, ycord + .2f));
-            returner = false;
-            distance = 0;
-            okToGo = true;
-            count = 0;
-        }
-
-
-
-
-        if (goLeft)
-            if (!returner)
-            {
-                distance += Vector3.Distance(loc, left.GetComponent<Rigidbody2D>().position);
-                loc = left.GetComponent<Rigidbody2D>().position;
-
-                left.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, 0) * .1f);
-            }
-            else
-            {
-                {
-                    distance += Vector3.Distance(loc, left.GetComponent<Rigidbody2D>().position);
-                    loc = left.GetComponent<Rigidbody2D>().position;
-
-                    left.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10,0 ) * .1f);
-                }
-            }
-
-        if (returner & left.GetComponent<Rigidbody2D>().transform.position.x >= xcord + .4f & goLeft)
-        {
-            goLeft = false;
-            left.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-            left.GetComponent<Rigidbody2D>().transform.position = (new Vector2(xcord+.4f, ycord));
-            returner = false;
-            distance = 0;
-            okToGo = true;
-            count = 0;
-        }
-
-
-
-        if (goRight)
-            if (!returner)
-            {
-                distance += Vector3.Distance(loc, right.GetComponent<Rigidbody2D>().position);
-                loc = right.GetComponent<Rigidbody2D>().position;
-
-                right.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10, 0) * .1f);
-            }
-            else
-            {
-                {
-                    distance += Vector3.Distance(loc, right.GetComponent<Rigidbody2D>().position);
-                    loc = right.GetComponent<Rigidbody2D>().position;
-
-                    right.GetComponent<Rigidbody2D>().AddForce(new Vector2(10,0 ) * .1f);
-                }
-            }
-
-        if (returner & right.GetComponent<Rigidbody2D>().transform.position.x >= xcord - .4f & goRight)
-        {
-            goRight = false;
-            right.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-            right.GetComponent<Rigidbody2D>().transform.position = (new Vector2(xcord - .4f, ycord));
-            returner = false;
-            distance = 0;
-            okToGo = true;
-            count = 0;
-        }
-
-
 
     }
 }
