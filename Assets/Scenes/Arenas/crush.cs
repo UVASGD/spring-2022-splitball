@@ -10,7 +10,7 @@ public class crush : MonoBehaviour
     public GameObject right;
 
     bool okToGo = true;
-    float toWait = 3.3f;
+    float toWait = 2.5f;
     float count = 0;
     int whichOne;
 
