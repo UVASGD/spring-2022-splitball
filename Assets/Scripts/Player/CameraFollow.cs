@@ -48,7 +48,7 @@ public class CameraFollow : MonoBehaviour
         float clampedy = Mathf.Clamp(transform.position.y, minbounds.y+halfHeight, maxbounds.y - halfHeight);
         transform.position = new Vector3(clampedX, clampedy, transform.position.z);
 
-        if (GameObject.Find("Line").GetComponent<LineDrawer>().getDistance() <= theCamera.orthographicSize * 1.33f)
+        if (GameObject.Find("Line").GetComponent<LineDrawer>().getDistance() <= theCamera.orthographicSize * 1.5f)
         {
             theCamera.orthographicSize = theCamera.orthographicSize - 2 * Time.deltaTime;
             if (theCamera.orthographicSize <= 10)
@@ -59,7 +59,7 @@ public class CameraFollow : MonoBehaviour
             //    GameObject.Find("BackgroundSpace").GetComponent<Transform>().localScale -= new Vector3(0.001f, 0.001f);
             
         }
-        else if (GameObject.Find("Line").GetComponent<LineDrawer>().getDistance() >= theCamera.orthographicSize * 1.4f)
+        else if (GameObject.Find("Line").GetComponent<LineDrawer>().getDistance() >= theCamera.orthographicSize * 1.9f)
         {
             theCamera.orthographicSize = theCamera.orthographicSize + 2*Time.deltaTime;
            

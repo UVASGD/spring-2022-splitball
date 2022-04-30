@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faff19e633b36294a8da7c5611e1776b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 10
+  force: 8
   lastBoost: 0
   boostTimer: 0
   clip: {fileID: 8300000, guid: 06d44100271b3f449b8319305ae341fd, type: 3}

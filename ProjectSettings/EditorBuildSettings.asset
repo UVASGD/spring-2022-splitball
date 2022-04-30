@@ -47,4 +47,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arenas/Box On Box.unity
     guid: 6b7268e29cd70ae448eeb08741bc7e8a
+  - enabled: 1
+    path: Assets/Scenes/Arenas/On Time.unity
+    guid: f7b153c3b1925c94088cb14185d8d29d
+  - enabled: 1
+    path: Assets/Scenes/Arenas/Chicken.unity
+    guid: 149e9f404331e61498c7ea0f4bdacd04
+  - enabled: 1
+    path: Assets/Scenes/Arenas/Crusher.unity
+    guid: d221005e4b321bd4ca12fd7c136097b4
+  - enabled: 1
+    path: Assets/Scenes/Arenas/house.unity
+    guid: db26cc5b5d27a3342aedd7089afea785
+  - enabled: 1
+    path: Assets/Scenes/Arenas/hell.unity
+    guid: 1dbff99e26b57d0489e68701fadd99d2
+  - enabled: 1
+    path: Assets/Scenes/Arenas/hole.unity
+    guid: ed744bcabef35f34ebdf1bc24a10fcbc
   m_configObjects: {}
