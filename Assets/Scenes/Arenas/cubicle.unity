@@ -213,6 +213,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bulletSpawner (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
 --- !u!1001 &30527668
@@ -468,6 +473,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bulletSpawner (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
 --- !u!1001 &44680550
@@ -658,6 +668,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bulletSpawner (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
@@ -2932,6 +2947,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bulletSpawner (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
 --- !u!1001 &480219635
@@ -3025,6 +3045,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bulletSpawner (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
@@ -3337,6 +3362,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bulletSpawner (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
 --- !u!1 &981891056 stripped
@@ -3520,6 +3550,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bulletSpawner (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
 --- !u!1001 &1256777369
@@ -3613,6 +3648,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bulletSpawner (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
@@ -4175,6 +4215,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bulletSpawner (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
 --- !u!4 &1374459201 stripped
@@ -4499,6 +4544,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bulletSpawner (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
 --- !u!1001 &1693257645
@@ -4592,6 +4642,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bulletSpawner (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
@@ -4692,6 +4747,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bulletSpawner (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
@@ -5052,6 +5112,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bulletSpawner (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
 --- !u!1 &2049495671 stripped
@@ -5151,6 +5216,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bulletSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186187933118089820, guid: 78ba552474bb8114a9128257697af2f1,
+        type: 3}
+      propertyPath: lastFire
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba552474bb8114a9128257697af2f1, type: 3}
