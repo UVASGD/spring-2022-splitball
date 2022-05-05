@@ -2866,6 +2866,7 @@ GameObject:
   - component: {fileID: 1553836790}
   - component: {fileID: 1553836789}
   - component: {fileID: 1553836791}
+  - component: {fileID: 1553836792}
   m_Layer: 0
   m_Name: clock
   m_TagString: levelTile
@@ -3107,6 +3108,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateAround: {fileID: 1369667805}
   respawns: []
+  gm: {fileID: 2112223411}
+--- !u!19719996 &1553836792
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553836787}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!4 &1562988366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7485426692456981026, guid: 4bfde09625e481e43ad7eb841ce5e3e6,

@@ -1522,6 +1522,7 @@ GameObject:
   - component: {fileID: 926958025}
   - component: {fileID: 926958028}
   - component: {fileID: 926958027}
+  - component: {fileID: 926958026}
   m_Layer: 0
   m_Name: bottom
   m_TagString: levelTile
@@ -1543,6 +1544,22 @@ Transform:
   m_Father: {fileID: 1706846687}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!19719996 &926958026
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926958024}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!483693784 &926958027
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -2247,6 +2264,7 @@ GameObject:
   - component: {fileID: 1408112865}
   - component: {fileID: 1408112868}
   - component: {fileID: 1408112867}
+  - component: {fileID: 1408112866}
   m_Layer: 0
   m_Name: top
   m_TagString: levelTile
@@ -2268,6 +2286,22 @@ Transform:
   m_Father: {fileID: 1703581235}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!19719996 &1408112866
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408112864}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!483693784 &1408112867
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -3386,6 +3420,7 @@ GameObject:
   - component: {fileID: 1628739686}
   - component: {fileID: 1628739689}
   - component: {fileID: 1628739688}
+  - component: {fileID: 1628739687}
   m_Layer: 0
   m_Name: left
   m_TagString: levelTile
@@ -3407,6 +3442,22 @@ Transform:
   m_Father: {fileID: 1703581235}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!19719996 &1628739687
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628739685}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!483693784 &1628739688
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -3920,7 +3971,7 @@ GameObject:
   - component: {fileID: 1703581234}
   m_Layer: 0
   m_Name: Grid (2)
-  m_TagString: Untagged
+  m_TagString: levelTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3967,7 +4018,7 @@ GameObject:
   - component: {fileID: 1706846688}
   m_Layer: 0
   m_Name: Grid (1)
-  m_TagString: Untagged
+  m_TagString: levelTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4027,6 +4078,7 @@ GameObject:
   - component: {fileID: 1737002075}
   - component: {fileID: 1737002078}
   - component: {fileID: 1737002077}
+  - component: {fileID: 1737002076}
   m_Layer: 0
   m_Name: right
   m_TagString: levelTile
@@ -4048,6 +4100,22 @@ Transform:
   m_Father: {fileID: 1703581235}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!19719996 &1737002076
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737002074}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!483693784 &1737002077
 TilemapRenderer:
   m_ObjectHideFlags: 0
