@@ -128,6 +128,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1341985059077510798, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341985059077510798, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1478793116343536571, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: m_Name
@@ -231,7 +241,7 @@ PrefabInstance:
     - target: {fileID: 5806017286969273995, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: m_Volume
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5806017286969273995, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
@@ -914,8 +924,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 1000}
+  m_AnchoredPosition: {x: 0, y: 27}
+  m_SizeDelta: {x: 1784, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &842713556
 MonoBehaviour:
@@ -938,7 +948,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "A sequal to Dashball, Splitball is the intense battle of \ntwo balls trying
     to run the other into the wall.\n\nThis is a project by UVA Student Game Developers
-    \nin Spring 2022"
+    \nin Spring 2022, built on the 2021 Fall project Dashball \n\nDirector: Christopher
+    Ricigliano\nProgramers: Jerry Gu, Spencer Portuese\nArt: Jacob Lear\nMusic: Peter
+    Tessier\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -965,8 +977,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
